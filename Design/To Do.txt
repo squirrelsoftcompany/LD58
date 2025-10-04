@@ -1,0 +1,44 @@
+< To-do list>
+
+Map monde
+	fond
+	Routes
+		UI coût
+		intéraction déplacement
+			higlight
+			passage de tour/déplacement
+	décors
+		arbres
+		cailloux
+		...
+	villages
+	villes
+	UI taxes
+	optionel
+		lac
+		rivieres
+caravane
+	système d'inventaire
+	chariots
+		3lvl (opt)
+		chevaux
+	gardes
+		equipement (opt)
+	icone map monde
+	affichage ressources
+bandits
+	équipement (opt)
+phase combat 
+	zoom
+	comportement
+musique
+sfx
+pop-up
+	amméllorations
+		voir options
+	évents
+		
+
+
+
+							MOUSTACHE
