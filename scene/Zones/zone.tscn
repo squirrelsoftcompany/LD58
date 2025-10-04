@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://he5f6ia7kbf3"]
+[gd_scene load_steps=9 format=3 uid="uid://he5f6ia7kbf3"]
 
 [ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
-[ext_resource type="Theme" uid="uid://57h6w2avsk6f" path="res://UI/Theme.tres" id="2_stcbh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_epm7c"]
 radius = 0.6
@@ -14,13 +13,42 @@ radius = 1.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_o6ke5"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stcbh"]
+bg_color = Color(0.28515625, 0.11922471, 0.0456307, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.24609375, 0.24609375, 0.24609375, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_bottom = 8.0
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paslt"]
+bg_color = Color(0.23046875, 0.09471318, 0.037885267, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.65625, 0.65625, 0.65625, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_bottom = 8.0
+shadow_size = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa87r"]
 bg_color = Color(0.6762811, 0.73046875, 0.08197581, 1)
-border_width_left = 20
-border_width_top = 3
-border_width_right = 8
-border_width_bottom = 3
-border_color = Color(0.52734375, 0.43945313, 0.037006564, 1)
+border_width_left = 46
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0.3984375, 0.33302236, 0.026760729, 1)
 border_blend = true
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -30,6 +58,10 @@ expand_margin_left = 1.0
 expand_margin_top = 4.0
 expand_margin_right = 1.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o6ke5"]
+height = 0.8
+radius = 1.0
+
 [node name="Zone" type="Node3D"]
 script = ExtResource("1_qqvsp")
 
@@ -38,6 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_epm7c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Place"]]
+disable_mode = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37242138, 0)
@@ -61,72 +94,123 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_bottom = 20
 
-[node name="Button" type="Button" parent="Sprite3D/SubViewport/MarginContainer"]
-custom_minimum_size = Vector2(150, 70)
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer"]
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_stcbh")
+
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_paslt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer"]
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="TaxLevel" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("2_stcbh")
-theme_type_variation = &"DiegeticButton"
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel3" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.4
+mouse_filter = 1
+
+[node name="TaxLevel2" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+mouse_filter = 1
 
-[node name="Panel4" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Control2" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel5" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="TaxLevel3" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel6" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D"]
+disable_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/StaticBody3D"]
+shape = SubResource("CylinderShape3D_o6ke5")
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]
+[connection signal="mouse_entered" from="Sprite3D/StaticBody3D" to="." method="tax_hover" binds= [true]]
+[connection signal="mouse_exited" from="Sprite3D/StaticBody3D" to="." method="tax_hover"]
