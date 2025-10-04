@@ -34,4 +34,4 @@ func innit():
 	path.curve.set_point_position(1,to.position)
 	$Sprite3D.position = ((to.position-from.position)/2)+from.position
 	$Sprite3D.position.y = text_altitude
-	$Sprite3D/SubViewport/Label.text = cost
+	$Sprite3D/SubViewport/Label.text = str(cost)
