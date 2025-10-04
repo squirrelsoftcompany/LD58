@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt6imb6cxfqv"]
+
+[ext_resource type="Script" uid="uid://dchat82bij1dh" path="res://Scripts/Places/road.gd" id="1_vdnbs"]
+
+[sub_resource type="Curve3D" id="Curve3D_703ny"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15.485373, 3.8146973e-06, 4.587744, 0, 0, 0, 0, 0, 0, -3.9628315, 0, 15.116997),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Road" type="Node3D"]
+script = ExtResource("1_vdnbs")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_703ny")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(-0.2, -0.1, -0.2, 0.1, 0.2, 0.1, 0.2, -0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

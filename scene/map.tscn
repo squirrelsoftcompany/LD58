@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://n6lt5shbnh74"]
+
+[ext_resource type="PackedScene" uid="uid://dt6imb6cxfqv" path="res://scene/road.tscn" id="1_wpp1k"]
+[ext_resource type="PackedScene" uid="uid://he5f6ia7kbf3" path="res://scene/Zones/zone.tscn" id="2_h0nt1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpp1k"]
+albedo_color = Color(0.14648438, 0.29296875, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jp76l"]
+size = Vector2(50, 50)
+subdivide_width = 24
+subdivide_depth = 24
+
+[node name="Map" type="Node3D"]
+
+[node name="BackGround" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_wpp1k")
+mesh = SubResource("PlaneMesh_jp76l")
+
+[node name="RoadHolder" type="Node3D" parent="."]
+
+[node name="Road" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone")
+to = NodePath("../../ZoneHolder/Zone2")
+
+[node name="Road2" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone2")
+to = NodePath("../../ZoneHolder/Zone3")
+
+[node name="Road3" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone3")
+to = NodePath("../../ZoneHolder/Zone4")
+
+[node name="Road4" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone4")
+to = NodePath("../../ZoneHolder/Zone5")
+
+[node name="Road5" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone5")
+to = NodePath("../../ZoneHolder/Zone6")
+
+[node name="Road6" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone6")
+to = NodePath("../../ZoneHolder/Zone7")
+
+[node name="Road7" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone7")
+to = NodePath("../../ZoneHolder/Zone")
+
+[node name="ZoneHolder" type="Node3D" parent="."]
+
+[node name="Zone" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72970057, -3.8146973e-06, -18.773907)
+
+[node name="Zone2" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.191275, 3.8146973e-06, -9.581068)
+
+[node name="Zone3" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.485373, 3.8146973e-06, 4.587744)
+
+[node name="Zone4" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9628315, 0, 15.116997)
+
+[node name="Zone5" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.211432, 0, 11.642417)
+
+[node name="Zone6" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.72006, 0, -0.70073223)
+
+[node name="Zone7" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.718901, 0, -11.146307)

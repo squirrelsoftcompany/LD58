@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://he5f6ia7kbf3"]
+
+[ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_epm7c"]
+radius = 0.6
+height = 3.0
+
+[node name="Zone" type="Node3D"]
+script = ExtResource("1_qqvsp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_epm7c")
