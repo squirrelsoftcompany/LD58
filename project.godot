@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="LD58"
+run/main_scene="uid://n6lt5shbnh74"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,9 +19,20 @@ config/icon="res://icon.svg"
 
 GlobalEventHolder="*res://Scripts/Autoload/EventHolder.gd"
 
+[global_group]
+
+Place=""
+
 [gui]
 
 theme/custom="uid://57h6w2avsk6f"
+
+[layer_names]
+
+3d_physics/layer_1="Mouse"
+3d_physics/layer_2="Guards"
+3d_physics/layer_3="Caravan"
+3d_physics/layer_4="Bandits"
 
 [rendering]
 

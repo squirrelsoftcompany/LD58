@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://he5f6ia7kbf3"]
+[gd_scene load_steps=4 format=3 uid="uid://he5f6ia7kbf3"]
 
 [ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
 
@@ -6,9 +6,22 @@
 radius = 0.6
 height = 3.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_paslt"]
+height = 1.0
+radius = 1.0
+
 [node name="Zone" type="Node3D"]
 script = ExtResource("1_qqvsp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="CentralPuck" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_epm7c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Place"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37242138, 0)
+shape = SubResource("CylinderShape3D_paslt")
+
+[connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
+[connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]

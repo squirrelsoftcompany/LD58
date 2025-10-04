@@ -36,6 +36,7 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
 billboard = 1
 double_sided = false
 no_depth_test = true

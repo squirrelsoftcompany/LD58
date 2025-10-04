@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://n6lt5shbnh74"]
+[gd_scene load_steps=9 format=3 uid="uid://n6lt5shbnh74"]
 
 [ext_resource type="PackedScene" uid="uid://dt6imb6cxfqv" path="res://scene/road.tscn" id="1_wpp1k"]
 [ext_resource type="PackedScene" uid="uid://he5f6ia7kbf3" path="res://scene/Zones/zone.tscn" id="2_h0nt1"]
+[ext_resource type="PackedScene" uid="uid://fpe8p52wc2xa" path="res://scene/caravan.tscn" id="3_h0nt1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h0nt1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nf54y"]
+sky_material = SubResource("ProceduralSkyMaterial_h0nt1")
+
+[sub_resource type="Environment" id="Environment_4xw1d"]
+background_mode = 2
+sky = SubResource("Sky_nf54y")
+tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpp1k"]
 albedo_color = Color(0.14648438, 0.29296875, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jp76l"]
-size = Vector2(50, 50)
+size = Vector2(100, 100)
 subdivide_width = 24
 subdivide_depth = 24
 
 [node name="Map" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4xw1d")
 
 [node name="BackGround" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_wpp1k")
@@ -47,10 +67,19 @@ to = NodePath("../../ZoneHolder/Zone7")
 from = NodePath("../../ZoneHolder/Zone7")
 to = NodePath("../../ZoneHolder/Zone")
 
+[node name="Road8" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone3")
+to = NodePath("../../ZoneHolder/Zone8")
+
+[node name="Road9" parent="RoadHolder" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+from = NodePath("../../ZoneHolder/Zone8")
+to = NodePath("../../ZoneHolder/Zone5")
+
 [node name="ZoneHolder" type="Node3D" parent="."]
 
 [node name="Zone" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72970057, -3.8146973e-06, -18.773907)
+capital = true
 
 [node name="Zone2" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.191275, 3.8146973e-06, -9.581068)
@@ -69,3 +98,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.72006, 0, -0.70073223)
 
 [node name="Zone7" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.718901, 0, -11.146307)
+
+[node name="Zone8" parent="ZoneHolder" instance=ExtResource("2_h0nt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.745466, 0, 6.9135475)
+
+[node name="Caravan" parent="." node_paths=PackedStringArray("capital") instance=ExtResource("3_h0nt1")]
+capital = NodePath("../ZoneHolder/Zone")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.52011555, 0.85409594, 0, -0.85409594, 0.52011555, 0, 17.45702, 15.781097)

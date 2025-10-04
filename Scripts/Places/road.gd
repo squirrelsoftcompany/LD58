@@ -1,5 +1,7 @@
 @tool
 extends Node3D
+class_name Road
+
 @export var text_altitude : float = 5
 @export var cobbled : bool = false
 @export var cost : int = 1
@@ -23,6 +25,8 @@ extends Node3D
 
 func _ready():
 	innit()
+	from.outgoing_roads.append(self)
+	GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
 
 func _process(_delta):
 	if Engine.is_editor_hint() and from != null and to != null:
@@ -35,3 +39,9 @@ func innit():
 	$Sprite3D.position = ((to.position-from.position)/2)+from.position
 	$Sprite3D.position.y = text_altitude
 	$Sprite3D/SubViewport/Label.text = str(cost)
+
+func show_cost():
+	$Sprite3D.show()
+
+func hide_cost():
+	$Sprite3D.hide()

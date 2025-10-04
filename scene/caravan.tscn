@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://fpe8p52wc2xa"]
+
+[ext_resource type="Script" uid="uid://dspbrgsl6xa86" path="res://Scripts/caravan.gd" id="1_m368y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hf2xf"]
+size = Vector3(1, 0.8, 1.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ecal"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x76il"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7u8rc"]
+radius = 0.15
+height = 0.5
+
+[node name="Caravan" type="Node3D"]
+script = ExtResource("1_m368y")
+
+[node name="WorldVis" type="Node3D" parent="."]
+
+[node name="Cart" type="MeshInstance3D" parent="WorldVis"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.6202994)
+mesh = SubResource("BoxMesh_hf2xf")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="WorldVis/Cart"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.5891547, -0.20304531, -0.0090819)
+mesh = SubResource("CylinderMesh_0ecal")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="WorldVis/Cart"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.589, -0.203, -0.009)
+mesh = SubResource("CylinderMesh_0ecal")
+skeleton = NodePath("../..")
+
+[node name="HorsyMacHorseFaceTheThird" type="MeshInstance3D" parent="WorldVis"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0.39558387)
+mesh = SubResource("CapsuleMesh_x76il")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WorldVis/HorsyMacHorseFaceTheThird"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0.46764633, -0.26391512)
+mesh = SubResource("CapsuleMesh_7u8rc")
+skeleton = NodePath("../..")
