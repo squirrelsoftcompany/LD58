@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://he5f6ia7kbf3"]
+[gd_scene load_steps=7 format=3 uid="uid://he5f6ia7kbf3"]
 
 [ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
+[ext_resource type="Theme" uid="uid://57h6w2avsk6f" path="res://UI/Theme.tres" id="2_stcbh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_epm7c"]
 radius = 0.6
@@ -9,6 +10,25 @@ height = 3.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_paslt"]
 height = 1.0
 radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o6ke5"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa87r"]
+bg_color = Color(0.6762811, 0.73046875, 0.08197581, 1)
+border_width_left = 20
+border_width_top = 3
+border_width_right = 8
+border_width_bottom = 3
+border_color = Color(0.52734375, 0.43945313, 0.037006564, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 4.0
+expand_margin_right = 1.0
 
 [node name="Zone" type="Node3D"]
 script = ExtResource("1_qqvsp")
@@ -22,6 +42,91 @@ mesh = SubResource("CapsuleMesh_epm7c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37242138, 0)
 shape = SubResource("CylinderShape3D_paslt")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_o6ke5")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="Sprite3D/SubViewport/MarginContainer"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_stcbh")
+theme_type_variation = &"DiegeticButton"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="Panel3" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Panel4" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="Panel5" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="Panel6" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]

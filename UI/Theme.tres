@@ -1,14 +1,38 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://57h6w2avsk6f"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://57h6w2avsk6f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3om6"]
+bg_color = Color(0.28515625, 0.11922471, 0.0456307, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0bm5"]
+bg_color = Color(0.28515625, 0.11922471, 0.0456307, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.31640625, 0.31640625, 0.31640625, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0bm5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3om6"]
 
 [resource]
-diegetic/base_type = &"Label"
-diegetic/colors/font_color = Color(0.84313726, 1, 0.0627451, 1)
-diegetic/colors/font_outline_color = Color(0.32941177, 0.2509804, 0.09803922, 1)
-diegetic/constants/outline_size = 30
-diegetic/font_sizes/font_size = 150
-diegetic/styles/focus = SubResource("StyleBoxEmpty_h0bm5")
-diegetic/styles/normal = SubResource("StyleBoxEmpty_m3om6")
+DiegeticButton/base_type = &"Button"
+DiegeticButton/styles/hover = SubResource("StyleBoxFlat_m3om6")
+DiegeticButton/styles/normal = SubResource("StyleBoxFlat_h0bm5")
+DiegeticText/base_type = &"Label"
+DiegeticText/colors/font_color = Color(0.84313726, 1, 0.0627451, 1)
+DiegeticText/colors/font_outline_color = Color(0.32941177, 0.2509804, 0.09803922, 1)
+DiegeticText/constants/outline_size = 30
+DiegeticText/font_sizes/font_size = 150
+DiegeticText/styles/focus = SubResource("StyleBoxEmpty_h0bm5")
+DiegeticText/styles/normal = SubResource("StyleBoxEmpty_m3om6")
