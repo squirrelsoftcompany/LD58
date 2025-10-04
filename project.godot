@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 GlobalEventHolder="*res://Scripts/Autoload/EventHolder.gd"
 
+[gui]
+
+theme/custom="uid://57h6w2avsk6f"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

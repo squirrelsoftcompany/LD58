@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://57h6w2avsk6f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0bm5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3om6"]
+
+[resource]
+diegetic/base_type = &"Label"
+diegetic/colors/font_color = Color(0.84313726, 1, 0.0627451, 1)
+diegetic/colors/font_outline_color = Color(0.32941177, 0.2509804, 0.09803922, 1)
+diegetic/constants/outline_size = 30
+diegetic/font_sizes/font_size = 150
+diegetic/styles/focus = SubResource("StyleBoxEmpty_h0bm5")
+diegetic/styles/normal = SubResource("StyleBoxEmpty_m3om6")
