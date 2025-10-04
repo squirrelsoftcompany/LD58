@@ -2,6 +2,8 @@ extends Node
 class_name Place
 
 enum Taxes { LOW, MEDIUM, HIGH }
+@export_group("WorldMap")
+@export var road_sequence : int = 0
 
 @export_group("Stats")
 @export var goldStock: int = 0
