@@ -25,8 +25,9 @@ class_name Road
 
 func _ready():
 	innit()
-	from.outgoing_roads.append(self)
-	GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
+	if not Engine.is_editor_hint():
+		from.outgoing_roads.append(self)
+		GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
 
 func _process(_delta):
 	if Engine.is_editor_hint() and from != null and to != null:
