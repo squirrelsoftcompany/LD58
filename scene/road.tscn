@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt6imb6cxfqv"]
+[gd_scene load_steps=5 format=3 uid="uid://dt6imb6cxfqv"]
 
 [ext_resource type="Script" uid="uid://dchat82bij1dh" path="res://Scripts/Places/road.gd" id="1_vdnbs"]
+[ext_resource type="Theme" uid="uid://57h6w2avsk6f" path="res://UI/Theme.tres" id="2_703ny"]
 
 [sub_resource type="Curve3D" id="Curve3D_703ny"]
 closed = true
@@ -10,8 +11,12 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gfsfr"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
 [node name="Road" type="Node3D"]
 script = ExtResource("1_vdnbs")
+text_altitude = 3.0
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_703ny")
@@ -29,3 +34,23 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_gfsfr")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme = ExtResource("2_703ny")
+theme_type_variation = &"diegetic"
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
