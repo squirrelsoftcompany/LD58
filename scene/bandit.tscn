@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnmj48v5ydjje"]
+
+[ext_resource type="Script" uid="uid://d2tqjcywyt2cf" path="res://Scripts/bandit.gd" id="1_1t8un"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1t8un"]
+radius = 0.15
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h4kmv"]
+radius = 0.001
+
+[node name="Bandit" type="Node3D" groups=["bandit"]]
+script = ExtResource("1_1t8un")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CapsuleMesh_1t8un")
+
+[node name="WeaponSlot" type="Node" parent="Body"]
+
+[node name="Area3D" type="Area3D" parent="Body"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
+shape = SubResource("SphereShape3D_h4kmv")

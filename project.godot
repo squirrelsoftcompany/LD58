@@ -22,6 +22,8 @@ GlobalEventHolder="*res://Scripts/Autoload/EventHolder.gd"
 [global_group]
 
 Place=""
+bandit=""
+guard=""
 
 [gui]
 

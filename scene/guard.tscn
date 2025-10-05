@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://17hga36jjuc4"]
+
+[ext_resource type="Script" uid="uid://dyrlpr4uwn5a6" path="res://Scripts/guard.gd" id="1_6ld80"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qc82v"]
+radius = 0.15
+height = 0.6
+
+[node name="Guard" type="Node3D" node_paths=PackedStringArray("bonk_range") groups=["guard"]]
+script = ExtResource("1_6ld80")
+bonk_range = NodePath("")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CapsuleMesh_qc82v")
+
+[node name="WeaponSlot" type="Node" parent="Body"]
