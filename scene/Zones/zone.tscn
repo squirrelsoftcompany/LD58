@@ -86,23 +86,39 @@ texture = SubResource("ViewportTexture_o6ke5")
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Sprite3D/SubViewport"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.5
+offset_top = -35.0
+offset_right = 278.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+alignment = 1
 
-[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer"]
+[node name="Spacer" type="Control" parent="Sprite3D/SubViewport/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Taxes" type="MarginContainer" parent="Sprite3D/SubViewport/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes"]
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_stcbh")
 
-[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes"]
 visible = false
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
@@ -110,21 +126,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_paslt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/HBoxContainer/Taxes"]
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
-[node name="TaxLevel" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+[node name="TaxLevel" type="HBoxContainer" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -132,7 +148,7 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -140,20 +156,20 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel"]
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.4
 mouse_filter = 1
 
-[node name="TaxLevel2" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+[node name="TaxLevel2" type="HBoxContainer" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel2"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -161,15 +177,15 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel2"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Control2" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
+[node name="Control2" type="Control" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel2"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel2"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -177,18 +193,18 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="TaxLevel3" type="HBoxContainer" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer"]
+[node name="TaxLevel3" type="HBoxContainer" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Control" type="Control" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
+[node name="Control" type="Control" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel3"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel3"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -196,13 +212,25 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
 
-[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel3"]
+[node name="Panel2" type="Panel" parent="Sprite3D/SubViewport/HBoxContainer/Taxes/VBoxContainer/TaxLevel3"]
 custom_minimum_size = Vector2(60, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_aa87r")
+
+[node name="Spacer2" type="Control" parent="Sprite3D/SubViewport/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_type_variation = &"DiegeticText"
+text = "0"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D"]
 disable_mode = 2

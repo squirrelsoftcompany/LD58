@@ -31,6 +31,9 @@ var hovered : bool = false
 var accessible : bool = false
 var current : bool = false
 var tax_hovered : bool = false
+var taxable : int
+
+@onready var tax_Vis : Control = $Sprite3D/SubViewport/HBoxContainer/Taxes
 
 func generatePlace() -> void:
 	goldStock = randi_range(minGold, maxGold) 
@@ -40,13 +43,22 @@ func generatePlace() -> void:
 
 func _ready():
 	GlobalEventHolder.connect("loopEnd", func(): _updatePlace())
-	GlobalEventHolder.turnStart.connect(_cart_accessibility)
+	GlobalEventHolder.turnStart.connect(func(x): if x == self: _collector_visit())
 	GlobalEventHolder.turnEnd.connect(func(_x): _turn_end())
-	GlobalEventHolder.loopStart.connect(func(): if capital:_cart_accessibility(self))
-	
+	GlobalEventHolder.loopStart.connect(_on_loop_start)
+
+func _on_loop_start():
+	$Sprite3D/SubViewport/HBoxContainer.visible= goldStock >= 3
+	$Sprite3D/StaticBody3D.show()
+	tax_Vis.show()
+	_on_tax_changed()
+	_hover()
+	if capital:
+		_collector_visit()
+
 func _updatePlace():
-	pass
-	
+	print("TODO: _updatePlace() in place")
+
 
 func _hover(x : bool = false):
 	if accessible:
@@ -64,15 +76,18 @@ func _input(event):
 			if hovered:
 				GlobalEventHolder.turnEnd.emit(self)
 			elif tax_hovered:
-				_on_tax_changed()
+				_on_tax_changed(1)
 
-func _cart_accessibility(x : Place) :
-	if x == self:
-		accessible = false
-		current = true
-		for road in outgoing_roads:
-			road.to.accessible = true
-			road.show_cost()
+func _collector_visit() :
+	accessible = false
+	current = true
+	for road in outgoing_roads:
+		road.to.accessible = true
+		road.show_cost()
+	goldStock -= taxable
+	tax_Vis.hide()
+	$Sprite3D/StaticBody3D.hide()
+
 
 func _turn_end():
 	current = false
@@ -81,9 +96,12 @@ func _turn_end():
 
 func tax_hover(x:bool=false):
 	tax_hovered = x
-	$Sprite3D/SubViewport/MarginContainer/Panel2.visible = x
+	tax_Vis.get_child(1).visible = x
 
-func _on_tax_changed():
-	taxeLevel += 1
-	$Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel2.visible = taxeLevel >= Taxes.MEDIUM
-	$Sprite3D/SubViewport/MarginContainer/VBoxContainer/TaxLevel.visible = taxeLevel == Taxes.HIGH
+func _on_tax_changed(x : int = 0):
+	taxeLevel += x
+	tax_Vis.get_node("VBoxContainer/TaxLevel2").visible = taxeLevel >= Taxes.MEDIUM
+	tax_Vis.get_node("VBoxContainer/TaxLevel").visible = taxeLevel == Taxes.HIGH
+	@warning_ignore("integer_division")
+	taxable = goldStock*(taxeLevel+1)/3
+	$Sprite3D/SubViewport/HBoxContainer/Label.text = str(taxable)
