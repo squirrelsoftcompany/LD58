@@ -12,6 +12,7 @@ func _ready():
 	position = capital.position
 	GlobalEventHolder.turnEnd.connect(_move)
 	GlobalEventHolder.loopStart.emit() ## TODO game bootup sequence
+	GlobalEventHolder.connect("reward_received", Callable(self, "_on_reward_received"))
 	print("TODO: caravan still starts the loop")
 
 func _move(x:Place):
@@ -31,3 +32,19 @@ func _move_done():
 		gold = 0
 		GlobalEventHolder.loopStart.emit()
 	GlobalEventHolder.turnStart.emit(current_zone)
+	
+func _on_reward_received(rewards: Dictionary) -> void:
+	for resource_name in rewards.keys():
+		var amount = rewards[resource_name]
+
+		match resource_name.to_lower():
+			"gold":
+				gold += amount
+				gold = max(gold, 0)
+				print("Gold new quantity : ",gold)
+			"food":
+				food += amount
+				food = max(food, 0)
+				print("Food new quantity : ",food)
+			_:
+				push_warning("Unknown reward type: %s" % resource_name)
