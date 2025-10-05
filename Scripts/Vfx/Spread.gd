@@ -10,4 +10,4 @@ extends MultiMeshInstance3D
 var meshes : Array
 
 func _ready():
-	
+	pass
