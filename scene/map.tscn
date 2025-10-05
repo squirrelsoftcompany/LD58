@@ -46,30 +46,37 @@ mesh = SubResource("PlaneMesh_jp76l")
 [node name="MainRing" type="Node3D" parent="RoadHolder"]
 
 [node name="MainRoad1" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/Capital")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone1")
 
 [node name="MainRoad2" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone1")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone2")
 
 [node name="MainRoad3" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone2")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone3")
 
 [node name="MainRoad4" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone3")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone4")
 
 [node name="MainRoad5" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone4")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 
 [node name="MainRoad6" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone6")
 
 [node name="MainRoad7" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone6")
 to = NodePath("../../../ZoneHolder/Capital")
 
@@ -77,31 +84,37 @@ to = NodePath("../../../ZoneHolder/Capital")
 
 [node name="InRoad1" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/Capital")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone1")
 
 [node name="InRoad2" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone1")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone2")
 
 [node name="InRoad3" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone2")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone3")
 
 [node name="InRoad4" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone3")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone4")
 
 [node name="InRoad5" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone4")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone5")
 
 [node name="InRoad6" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 3
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone5")
 to = NodePath("../../../ZoneHolder/Capital")
 
@@ -109,46 +122,55 @@ to = NodePath("../../../ZoneHolder/Capital")
 
 [node name="OutRoad1" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone1")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone1")
 
 [node name="OutRoad2" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone1")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone2")
 
 [node name="OutRoad3" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone2")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone3")
 
 [node name="OutRoad4" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone3")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone3")
 
 [node name="OutRoad5" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone3")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone4")
 
 [node name="OutRoad6" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone4")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone5")
 
 [node name="OutRoad7" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone5")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone6")
 
 [node name="OutRoad8" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone6")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone7")
 
 [node name="OutRoad9" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 4
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone7")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone6")
 
@@ -156,41 +178,49 @@ to = NodePath("../../../ZoneHolder/MainRoad/MRZone6")
 
 [node name="ConnectorRoad1" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone1")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone2")
 
 [node name="ConnectorRoad2" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone2")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone2")
 
 [node name="ConnectorRoad3" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone2")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone2")
 
 [node name="ConnectorRoad4" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone4")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone4")
 
 [node name="ConnectorRoad5" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/InRoad/IR_Zone4")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 
 [node name="ConnectorRoad6" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 to = NodePath("../../../ZoneHolder/InRoad/IR_Zone5")
 
 [node name="ConnectorRoad7" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/OutRoad/OR_Zone5")
 to = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 
 [node name="ConnectorRoad8" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("1_wpp1k")]
 cost = 2
+crimerate = 0.0
 from = NodePath("../../../ZoneHolder/MainRoad/MRZone5")
 to = NodePath("../../../ZoneHolder/OutRoad/OR_Zone6")
 
@@ -204,58 +234,64 @@ capital = true
 
 [node name="MRZone1" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.433372, 3.8146973e-06, -11.326788)
+population = 1
 
 [node name="MRZone2" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.014755, 3.8146973e-06, 4.889115)
+population = 8
 
 [node name="MRZone3" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.931498, 0, 19.246702)
-goldStock = 5
+population = 3
 
 [node name="MRZone4" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.584156, 0, 15.777222)
+population = 1
 
 [node name="MRZone5" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.844614, -3.8146973e-06, 2.4543982)
+population = 8
 
 [node name="MRZone6" parent="ZoneHolder/MainRoad" groups=["MainRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.571825, 0, -11.203787)
+population = 1
 
 [node name="InRoad" type="Node3D" parent="ZoneHolder"]
 
 [node name="IR_Zone1" parent="ZoneHolder/InRoad" groups=["InRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.541596, 1.9073486e-06, -9.58454)
-goldStock = 9
 
 [node name="IR_Zone2" parent="ZoneHolder/InRoad" groups=["InRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.297773, -1.9073486e-06, 2.9967098)
-goldStock = 9
+population = 2
 
 [node name="IR_Zone3" parent="ZoneHolder/InRoad" groups=["InRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.079258, 0, 13.283693)
-goldStock = 9
 
 [node name="IR_Zone4" parent="ZoneHolder/InRoad" groups=["InRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.019232, -1.9073486e-06, 3.9162745)
-goldStock = 9
+population = 2
 
 [node name="IR_Zone5" parent="ZoneHolder/InRoad" groups=["InRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.660978, 0, -8.64258)
-goldStock = 9
+population = 2
 
 [node name="OutRoad" type="Node3D" parent="ZoneHolder"]
 
 [node name="OR_Zone1" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.667276, 0, -1.692626)
+population = 3
 
 [node name="OR_Zone2" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.04619, 0, 11.998846)
 
 [node name="OR_Zone3" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.956251, 0, 20.29026)
+population = 3
 
 [node name="OR_Zone4" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.203268, 0, 23.55133)
+population = 3
 
 [node name="OR_Zone5" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.665186, 0, 16.219194)
@@ -265,6 +301,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.084675, 0, 2.7600012)
 
 [node name="OR_Zone7" parent="ZoneHolder/OutRoad" groups=["OutRoadPlaces"] instance=ExtResource("2_h0nt1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.95874, -1.9073486e-06, -9.864445)
+population = 3
 
 [node name="Caravan" parent="." node_paths=PackedStringArray("capital") instance=ExtResource("3_h0nt1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

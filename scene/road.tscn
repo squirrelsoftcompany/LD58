@@ -51,6 +51,7 @@ viewport_path = NodePath("Sprite3D/SubViewport")
 [node name="Road" type="Node3D"]
 script = ExtResource("1_vdnbs")
 text_altitude = 3.0
+crimeRate = null
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_703ny")
@@ -59,6 +60,9 @@ curve = SubResource("Curve3D_703ny")
 material_override = SubResource("ShaderMaterial_0o65x")
 instance_shader_parameters/cost = 0
 calculate_tangents = false
+use_collision = true
+collision_layer = 16
+collision_mask = 0
 polygon = PackedVector2Array(0.6, -0.3, 0.45, 0, 0.3, 0.1, -0.3, 0.1, -0.45, 0, -0.6, -0.3, 0, -0.3)
 mode = 2
 path_node = NodePath("..")

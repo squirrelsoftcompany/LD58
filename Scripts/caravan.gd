@@ -27,5 +27,7 @@ func _move_done():
 	print("TODO: show gold collected, it's ",gold," btw")
 	if current_zone == capital :
 		GlobalEventHolder.loopEnd.emit()
-	else:
-		GlobalEventHolder.turnStart.emit(current_zone)
+		print("TODO: capital market")
+		gold = 0
+		GlobalEventHolder.loopStart.emit()
+	GlobalEventHolder.turnStart.emit(current_zone)

@@ -11,7 +11,7 @@ class_name Road
 		cost = x
 		$Path3D/CSGPolygon3D.set_instance_shader_parameter("cost",cost-1)
 
-@export var crimerate : float = 0 ## percentage
+@export var crimeRate : float = 0 ## percentage
 
 @export var from : Node3D :
 	set(x):
@@ -35,6 +35,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		from.outgoing_roads.append(self)
 		GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
+		GlobalEventHolder.loopStart.connect(_update_loop)
 
 func _process(_delta):
 	if Engine.is_editor_hint() and from != null and to != null:
@@ -53,3 +54,6 @@ func show_cost():
 
 func hide_cost():
 	$Sprite3D.hide()
+
+func _update_loop():
+	crimeRate = (from.crimeRate + to.crimeRate)/2

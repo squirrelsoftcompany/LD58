@@ -9,7 +9,12 @@ enum Taxes { LOW, MEDIUM, HIGH }
 @export var goldStock: int = 0
 @export var foodStock: int = 0
 @export var population: int = 0
-@export var crimeRate: float = 0
+@export var crimeRate: float = 0:
+	set(x):
+		if x>100 : x=100
+		elif x<0 : x=0
+		crimeRate = x
+
 @export var taxeLevel: int = Taxes.LOW :
 	set(x):
 		while x > Taxes.HIGH:
@@ -31,7 +36,11 @@ var hovered : bool = false
 var accessible : bool = false
 var current : bool = false
 var tax_hovered : bool = false
-var taxable : int
+var taxable : int = 0:
+	set(x):
+		if goldStock < 3:
+			x=0
+		taxable = x
 
 @onready var tax_Vis : Control = $Sprite3D/SubViewport/HBoxContainer/Taxes
 
@@ -48,6 +57,7 @@ func _ready():
 	GlobalEventHolder.loopStart.connect(_on_loop_start)
 
 func _on_loop_start():
+	goldStock = population
 	$Sprite3D/SubViewport/HBoxContainer.visible= goldStock >= 3
 	$Sprite3D/StaticBody3D.show()
 	tax_Vis.show()
@@ -57,7 +67,14 @@ func _on_loop_start():
 		_collector_visit()
 
 func _updatePlace():
-	print("TODO: _updatePlace() in place")
+	@warning_ignore("integer_division")
+	goldStock -= population/10
+	@warning_ignore("narrowing_conversion")
+	population *= 1.2
+	@warning_ignore("narrowing_conversion")
+	population -= crimeRate/10
+	@warning_ignore("integer_division")
+	crimeRate -= goldStock * population/2
 
 
 func _hover(x : bool = false):

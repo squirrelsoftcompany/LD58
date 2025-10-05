@@ -33,6 +33,7 @@ theme/custom="uid://57h6w2avsk6f"
 3d_physics/layer_2="Guards"
 3d_physics/layer_3="Caravan"
 3d_physics/layer_4="Bandits"
+3d_physics/layer_5="Gen_Obstacles"
 
 [rendering]
 

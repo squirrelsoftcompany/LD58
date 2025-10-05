@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://he5f6ia7kbf3"]
+[gd_scene load_steps=13 format=3 uid="uid://he5f6ia7kbf3"]
 
 [ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
+[ext_resource type="Shader" uid="uid://brtg76uboo5l6" path="res://Shaders/Spikes.tres" id="2_stcbh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_epm7c"]
 radius = 0.6
@@ -61,6 +62,20 @@ expand_margin_right = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o6ke5"]
 height = 0.8
 radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6ke5"]
+render_priority = 0
+shader = ExtResource("2_stcbh")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aa87r"]
+material = SubResource("ShaderMaterial_o6ke5")
+top_radius = 0.1
+bottom_radius = 0.1
+radial_segments = 8
+
+[sub_resource type="MultiMesh" id="MultiMesh_rjtur"]
+transform_format = 1
+mesh = SubResource("CylinderMesh_aa87r")
 
 [node name="Zone" type="Node3D"]
 script = ExtResource("1_qqvsp")
@@ -237,6 +252,13 @@ disable_mode = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/StaticBody3D"]
 shape = SubResource("CylinderShape3D_o6ke5")
+
+[node name="houses" type="Node3D" parent="."]
+
+[node name="Spikes" type="Node3D" parent="."]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Spikes"]
+multimesh = SubResource("MultiMesh_rjtur")
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]
