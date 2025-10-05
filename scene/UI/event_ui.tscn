@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvx7tffvwqn03" path="res://Scripts/event.gd" id="1_gclln"]
 
 [node name="EventUI" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_gclln")
 
 [node name="TextBoxPanel" type="Panel" parent="."]
@@ -49,6 +50,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="ChoicePopup" type="PanelContainer" parent="."]
+visible = false
 clip_contents = true
 anchors_preset = -1
 anchor_left = 0.3
@@ -82,21 +84,21 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 "
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ChoicePopup/MarginContainer/VBoxContainer"]
+[node name="ChoicesContainer" type="VBoxContainer" parent="ChoicePopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Control2" type="Control" parent="ChoicePopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control2" type="Control" parent="ChoicePopup/MarginContainer/VBoxContainer/ChoicesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="ChoicePopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="ChoicePopup/MarginContainer/VBoxContainer/ChoicesContainer"]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "OK"
 
-[node name="Control" type="Control" parent="ChoicePopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="ChoicePopup/MarginContainer/VBoxContainer/ChoicesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3

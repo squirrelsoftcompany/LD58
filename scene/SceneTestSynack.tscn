@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://6lniomeseq0r"]
+[gd_scene load_steps=4 format=3 uid="uid://6lniomeseq0r"]
 
 [ext_resource type="Script" uid="uid://cb4pum6jxof2s" path="res://scene/scene_test_synack.gd" id="1_vglxh"]
+[ext_resource type="Script" uid="uid://cq138k2ibep63" path="res://Scripts/UI/eventManager.gd" id="2_gl1cq"]
 [ext_resource type="PackedScene" uid="uid://42gux3sh7vl4" path="res://scene/UI/event_ui.tscn" id="2_mraof"]
 
 [node name="SceneTestSynack" type="Node3D"]
 script = ExtResource("1_vglxh")
+
+[node name="EventManager" type="Node" parent="."]
+script = ExtResource("2_gl1cq")
 
 [node name="EventUI" parent="." instance=ExtResource("2_mraof")]

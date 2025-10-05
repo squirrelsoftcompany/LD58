@@ -5,12 +5,12 @@ var event: EventData = load("res://DataEvents/event_coolGuy.tres")
 @onready var ui = $EventUI
 
 func _ready() -> void:
-	# show the UI
-	ui.display_ui(true)
+	var place_stats = {
+		"gold": 40,
+		"food": 20,
+		"crimerate": 5,
+		"population": 15
+	}
 
-	ui.show_text_array(
-		event.dialogue,
-		event.choices,
-		func(selected_choice):
-			print("Player chose:", selected_choice.text)
-	)
+	var place_type = "village"
+	GlobalEventHolder.emit_signal("request_event", place_stats, place_type)

@@ -44,6 +44,9 @@ var taxable : int = 0:
 
 @onready var tax_Vis : Control = $Sprite3D/SubViewport/HBoxContainer/Taxes
 
+func get_place_type() -> String:
+	return ""
+
 func generatePlace() -> void:
 	goldStock = randi_range(minGold, maxGold) 
 	foodStock = randi_range(minFood, maxFood)
@@ -110,6 +113,7 @@ func _turn_end():
 	current = false
 	accessible = false
 	hovered = false
+	GlobalEventHolder.emit_signal("request_event", get_stats_dict(), get_place_type())
 
 func tax_hover(x:bool=false):
 	tax_hovered = x
@@ -122,3 +126,11 @@ func _on_tax_changed(x : int = 0):
 	@warning_ignore("integer_division")
 	taxable = goldStock*(taxeLevel+1)/3
 	$Sprite3D/SubViewport/HBoxContainer/Label.text = str(taxable)
+	
+func get_stats_dict() -> Dictionary:
+	return {
+		"gold": goldStock,
+		"food": foodStock,
+		"crimerate": crimeRate,
+		"population": population
+	}

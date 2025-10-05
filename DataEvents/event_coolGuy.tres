@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_ysqe4"]
 script = ExtResource("1_ysqe4")
 text = "No"
+followup_dialogue = Array[String](["Well... have a nice day my lord..."])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [sub_resource type="Resource" id="Resource_p538p"]
@@ -14,14 +15,16 @@ text = "Indeed"
 rewards = {
 "Food": 1
 }
+followup_dialogue = Array[String](["Take some food my lord ! Your journey will be very long."])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [sub_resource type="Resource" id="Resource_8wgad"]
 script = ExtResource("1_ysqe4")
-text = "Give me your money bumpkin"
+text = "Give me your money, bumpkin !"
 rewards = {
 "Gold": 3
 }
+followup_dialogue = Array[String](["My excuses, my lord, this is all I have on me"])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [resource]
