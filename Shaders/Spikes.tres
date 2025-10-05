@@ -1,0 +1,58 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://brtg76uboo5l6"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_m42ut"]
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_gp0xu"]
+default_input_values = [0, 0.0, 1, 2.0]
+operator = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_05vnp"]
+expanded_output_ports = [0]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_y86t2"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Input:2
+	vec2 n_out2p0 = UV;
+	float n_out2p2 = n_out2p0.g;
+
+
+// Input:4
+	vec3 n_out4p0 = VERTEX;
+	float n_out4p1 = n_out4p0.r;
+	float n_out4p3 = n_out4p0.b;
+
+
+// FloatOp:3
+	float n_out3p0 = pow(n_out2p2, n_out4p1);
+
+
+// VectorCompose:5
+	vec3 n_out5p0 = vec3(n_out3p0, n_out3p0, n_out4p3);
+
+
+// Output:0
+	VERTEX = n_out5p0;
+
+
+}
+"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_m42ut")
+nodes/vertex/2/position = Vector2(-500, -80)
+nodes/vertex/3/node = SubResource("VisualShaderNodeFloatOp_gp0xu")
+nodes/vertex/3/position = Vector2(-160, 20)
+nodes/vertex/4/node = SubResource("VisualShaderNodeInput_05vnp")
+nodes/vertex/4/position = Vector2(-660, 160)
+nodes/vertex/5/node = SubResource("VisualShaderNodeVectorCompose_y86t2")
+nodes/vertex/5/position = Vector2(68.87367, 141.76491)
+nodes/vertex/connections = PackedInt32Array(2, 2, 3, 0, 3, 0, 5, 0, 3, 0, 5, 1, 4, 1, 3, 1, 4, 3, 5, 2, 5, 0, 0, 0)
