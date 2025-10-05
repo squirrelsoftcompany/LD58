@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://he5f6ia7kbf3"]
+[gd_scene load_steps=14 format=3 uid="uid://he5f6ia7kbf3"]
 
 [ext_resource type="Script" uid="uid://c2i0k42lbv0pg" path="res://Scripts/Places/place.gd" id="1_qqvsp"]
 [ext_resource type="Shader" uid="uid://brtg76uboo5l6" path="res://Shaders/Spikes.tres" id="2_stcbh"]
+[ext_resource type="Script" uid="uid://ck1xtjiq725vn" path="res://Scripts/Vfx/Spread.gd" id="3_o6ke5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_epm7c"]
 radius = 0.6
@@ -259,6 +260,13 @@ shape = SubResource("CylinderShape3D_o6ke5")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Spikes"]
 multimesh = SubResource("MultiMesh_rjtur")
+script = ExtResource("3_o6ke5")
+radial_orientation = null
+angle = null
+nb_max = null
+watched_variable = null
+min_range = null
+max_range = null
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]
