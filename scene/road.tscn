@@ -1,15 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt6imb6cxfqv"]
+[gd_scene load_steps=12 format=3 uid="uid://dt6imb6cxfqv"]
 
 [ext_resource type="Script" uid="uid://dchat82bij1dh" path="res://Scripts/Places/road.gd" id="1_vdnbs"]
 [ext_resource type="Theme" uid="uid://57h6w2avsk6f" path="res://UI/Theme.tres" id="2_703ny"]
+[ext_resource type="Shader" uid="uid://1x7ivaexu7vg" path="res://Shaders/road.tres" id="2_gfsfr"]
 
 [sub_resource type="Curve3D" id="Curve3D_703ny"]
-closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15.485373, 3.8146973e-06, 4.587744, 0, 0, 0, 0, 0, 0, -3.9628315, 0, 15.116997),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15.485373, 3.8146973e-06, 4.587744, 0, 0, 0, 0, 0, 0, -4.689526, 0, 16.382214),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gfsfr"]
+offsets = PackedFloat32Array(0.15254237, 0.22033899, 0.44067797, 0.5084746, 0.61864406, 0.7118644, 0.8135593, 0.9237288, 0.9661017)
+colors = PackedColorArray(0.1953125, 0.1953125, 0.1953125, 1, 0.5546875, 0.39696956, 0.005768484, 1, 0.49131945, 0.3511001, 0.019553265, 1, 0.26953125, 0.19055702, 0.0678, 1, 0.101074204, 0.30339247, 0.04512316, 1, 0, 0.37109375, 0.03151706, 1, 0.26953125, 0.19055702, 0.0678, 1, 0.17578125, 0.12427631, 0.044217378, 1, 0.03395874, 0.15625, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0o65x"]
+gradient = SubResource("Gradient_gfsfr")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_jviwn"]
+offsets = PackedFloat32Array(0.12711865, 0.3898305)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_81dv7"]
+noise_type = 2
+frequency = 0.1461
+fractal_octaves = 6
+fractal_lacunarity = 1.29
+fractal_gain = 2.29
+fractal_weighted_strength = 0.27
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rpcc7"]
+width = 128
+height = 128
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_81dv7")
+color_ramp = SubResource("Gradient_jviwn")
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0o65x"]
+render_priority = 0
+shader = ExtResource("2_gfsfr")
+shader_parameter/Noise = SubResource("NoiseTexture2D_rpcc7")
+shader_parameter/Gradient = SubResource("GradientTexture2D_0o65x")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gfsfr"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -22,7 +56,10 @@ text_altitude = 3.0
 curve = SubResource("Curve3D_703ny")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
-polygon = PackedVector2Array(-0.2, -0.1, -0.2, 0.1, 0.2, 0.1, 0.2, -0.1)
+material_override = SubResource("ShaderMaterial_0o65x")
+instance_shader_parameters/cost = 0
+calculate_tangents = false
+polygon = PackedVector2Array(0.6, -0.3, 0.45, 0, 0.3, 0.1, -0.3, 0.1, -0.45, 0, -0.6, -0.3, 0, -0.3)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -31,7 +68,7 @@ path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
 path_local = false
-path_continuous_u = true
+path_continuous_u = false
 path_u_distance = 1.0
 path_joined = false
 

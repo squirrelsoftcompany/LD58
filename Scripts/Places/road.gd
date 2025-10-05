@@ -4,7 +4,13 @@ class_name Road
 
 @export var text_altitude : float = 5
 @export var cobbled : bool = false
-@export var cost : int = 1
+@export var cost : int = 1:
+	set(x):
+		if x <1:
+			x=1
+		cost = x
+		$Path3D/CSGPolygon3D.set_instance_shader_parameter("cost",cost-1)
+
 @export var crimerate : float = 0 ## percentage
 
 @export var from : Node3D :
@@ -25,6 +31,7 @@ class_name Road
 
 func _ready():
 	innit()
+	cost = cost
 	if not Engine.is_editor_hint():
 		from.outgoing_roads.append(self)
 		GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
