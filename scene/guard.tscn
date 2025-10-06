@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://17hga36jjuc4"]
+[gd_scene load_steps=6 format=3 uid="uid://17hga36jjuc4"]
 
 [ext_resource type="Script" uid="uid://dyrlpr4uwn5a6" path="res://Scripts/guard.gd" id="1_6ld80"]
+[ext_resource type="Shader" uid="uid://btidscdmv2516" path="res://Shaders/GuardHelm.tres" id="2_x1kce"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qc82v"]
 radius = 0.15
 height = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_weq8v"]
+render_priority = 0
+shader = ExtResource("2_x1kce")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2he53"]
+material = SubResource("ShaderMaterial_weq8v")
+radius = 0.16
+height = 0.2
+is_hemisphere = true
 
 [node name="Guard" type="Node3D" groups=["guard"]]
 script = ExtResource("1_6ld80")
@@ -14,5 +25,9 @@ speed = 1.2
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 mesh = SubResource("CapsuleMesh_qc82v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15006787, 0)
+mesh = SubResource("SphereMesh_2he53")
 
 [node name="WeaponSlot" type="Node" parent="Body"]
