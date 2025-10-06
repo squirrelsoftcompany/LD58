@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=4 format=3 uid="uid://bmy8osfq8ha1r"]
+
+[ext_resource type="Script" uid="uid://chh4yhua0uswt" path="res://Scripts/Events/eventChoice.gd" id="1_a15w2"]
+[ext_resource type="Script" uid="uid://bpsyoluhklrd0" path="res://Scripts/Events/eventData.gd" id="2_qcxu8"]
+
+[sub_resource type="Resource" id="Resource_a15w2"]
+script = ExtResource("1_a15w2")
+text = "Game Over"
+followup_dialogue = Array[String](["Thank you for playing !!!"])
+metadata/_custom_type_script = "uid://chh4yhua0uswt"
+
+[resource]
+script = ExtResource("2_qcxu8")
+dialogue = Array[String](["You failed to accomplish your mission, the king is disapointed...", "A better collector will take your place next year."])
+choices = Array[ExtResource("1_a15w2")]([SubResource("Resource_a15w2")])
+max_gold = 10000000
+max_food = 10000000
+max_crime = 10000000
+max_population = 10000000
+capital = true
+metadata/_custom_type_script = "uid://bpsyoluhklrd0"
