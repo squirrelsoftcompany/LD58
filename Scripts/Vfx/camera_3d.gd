@@ -7,7 +7,7 @@ var fixed : bool = false
 
 func _ready():
 	GlobalEventHolder.endAmbush.connect(func(): fixed = false)
-	GlobalEventHolder.startAmbush.connect(func(): fixed = true)
+	GlobalEventHolder.startAmbush.connect(func(_x): fixed = true)
 
 func _input(event):
 	var view : Vector2 = get_viewport().get_visible_rect().size
