@@ -278,8 +278,8 @@ shape = SubResource("CylinderShape3D_o6ke5")
 multimesh = SubResource("MultiMesh_aa87r")
 script = ExtResource("3_o6ke5")
 nb_max = 30
-min_range = 0.8
-max_range = 2.4
+min_range = 1.0
+max_range = 2.5
 
 [node name="Spikes" type="Node3D" parent="."]
 
@@ -289,8 +289,9 @@ script = ExtResource("3_o6ke5")
 radial_orientation = true
 nb_max = 50
 watched_variable = 1
-min_range = 2.5
-max_range = 3.0
+min_range = 2.8
+max_range = 3.3
+min_offset = 0.0
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_hover" binds= [true]]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_hover"]

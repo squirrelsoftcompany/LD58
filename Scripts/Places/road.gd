@@ -20,6 +20,7 @@ class_name Road
 		curve.add_point(from.position)
 		curve.add_point($Path3D.curve.get_point_position(1))
 		$Path3D.curve = curve
+		change = true
 
 @export var to : Node3D :
 	set(x):
@@ -28,17 +29,22 @@ class_name Road
 		curve.add_point($Path3D.curve.get_point_position(0))
 		curve.add_point(to.position)
 		$Path3D.curve = curve
+		change = true
+
+var change : bool = true
 
 func _ready():
-	innit()
 	cost = cost
+	$Sprite3D.texture.viewport_path = $Sprite3D/SubViewport.get_path()
 	if not Engine.is_editor_hint():
 		from.outgoing_roads.append(self)
 		GlobalEventHolder.turnEnd.connect(func(_x):hide_cost())
 		GlobalEventHolder.loopStart.connect(_update_loop)
 
 func _process(_delta):
-	if Engine.is_editor_hint() and from != null and to != null:
+	position = position
+	if change:
+		change = false
 		innit()
 
 func innit():
@@ -48,6 +54,8 @@ func innit():
 	$Sprite3D.position = ((to.position-from.position)/2)+from.position
 	$Sprite3D.position.y = text_altitude
 	$Sprite3D/SubViewport/Label.text = str(cost)
+	if Engine.is_editor_hint() and from != null and to != null:
+		$Path3D/StaticBody3D/CollisionShape3D.shape = $Path3D/CSGPolygon3D.bake_collision_shape()
 
 func show_cost():
 	$Sprite3D.show()
