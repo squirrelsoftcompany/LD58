@@ -32,6 +32,5 @@ metadata/_custom_type_script = "uid://chh4yhua0uswt"
 script = ExtResource("2_f20kg")
 dialogue = Array[String](["Hello, please make yourselves comfortable and eat as you wish!"])
 choices = Array[ExtResource("1_ouwy0")]([SubResource("Resource_ouwy0"), SubResource("Resource_f20kg")])
-type = "inn"
 max_crime = 50
 metadata/_custom_type_script = "uid://bpsyoluhklrd0"
