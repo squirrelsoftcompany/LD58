@@ -1,33 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://6lniomeseq0r"]
+[gd_scene load_steps=4 format=3 uid="uid://6lniomeseq0r"]
 
-[ext_resource type="Script" uid="uid://cb4pum6jxof2s" path="res://scene/scene_test_synack.gd" id="1_vglxh"]
-[ext_resource type="Script" uid="uid://cq138k2ibep63" path="res://Scripts/UI/eventManager.gd" id="2_gl1cq"]
-[ext_resource type="PackedScene" uid="uid://42gux3sh7vl4" path="res://scene/UI/event_ui.tscn" id="2_mraof"]
-[ext_resource type="PackedScene" uid="uid://17hga36jjuc4" path="res://scene/guard.tscn" id="4_k65o0"]
-[ext_resource type="PackedScene" uid="uid://dnmj48v5ydjje" path="res://scene/bandit.tscn" id="5_xmote"]
+[ext_resource type="Script" uid="uid://d2tqjcywyt2cf" path="res://Scripts/bandit.gd" id="1_cwuqp"]
 
-[node name="SceneTestSynack" type="Node3D"]
-script = ExtResource("1_vglxh")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1t8un"]
+radius = 0.15
+height = 0.6
 
-[node name="EventManager" type="Node" parent="."]
-script = ExtResource("2_gl1cq")
+[sub_resource type="SphereShape3D" id="SphereShape3D_h4kmv"]
+radius = 0.001
 
-[node name="EventUI" parent="." instance=ExtResource("2_mraof")]
-
-[node name="Guard" parent="." instance=ExtResource("4_k65o0")]
-pv = 100
-speed = 0.5
-
-[node name="Bandit" parent="." instance=ExtResource("5_xmote")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6379459, 0, 0)
-pv = 100
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.88948816, 0.4569582, 0, -0.4569582, 0.88948816, 0.6575103, 1.0870984, 1.1112397)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.18241, 1.6349046)
-
-[node name="Bandit2" parent="." instance=ExtResource("5_xmote")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1775837, 0, -0.7439251)
+[node name="Bandit" type="Node3D" groups=["bandit"]]
+script = ExtResource("1_cwuqp")
 pv = 50
+speed = 0.4
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CapsuleMesh_1t8un")
+
+[node name="WeaponSlot" type="Node" parent="Body"]
+
+[node name="Area3D" type="Area3D" parent="Body"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Area3D"]
+shape = SubResource("SphereShape3D_h4kmv")

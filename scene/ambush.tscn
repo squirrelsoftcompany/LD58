@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpnm4wsmas28f"]
+
+[ext_resource type="Script" uid="uid://deor2jr3mpmae" path="res://Scripts/ambush.gd" id="1_lk15x"]
+[ext_resource type="PackedScene" uid="uid://dnmj48v5ydjje" path="res://scene/bandit.tscn" id="2_36usq"]
+
+[node name="Ambush" type="Node"]
+script = ExtResource("1_lk15x")
+bandit_scene = ExtResource("2_36usq")
