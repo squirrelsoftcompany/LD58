@@ -21,6 +21,7 @@ func _update_all():
 	_update_food()
 	_update_gold()
 	food_max_label.text = str(caravan.max_food)
+	gold_goal_label.text = str(caravan.gold_goal)
 	
 
 func _update_gold():

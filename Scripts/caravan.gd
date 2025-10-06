@@ -9,6 +9,7 @@ var guards : Array[Guard]
 var ambushed : bool = false
 var current_path : Road
 
+@export var gold_goal : int = 10
 @export var capital : Place
 @export var food : int = 10
 @export var max_food : int = 10
@@ -63,8 +64,10 @@ func _move_done():
 		GlobalEventHolder.loopEnd.emit()
 		print("TODO: capital market")
 		gold = 0
-		GlobalEventHolder.loopStart.emit()
 		food = max_food
+		@warning_ignore("narrowing_conversion")
+		gold_goal *= 1.3
+		GlobalEventHolder.loopStart.emit()
 	GlobalEventHolder.turnStart.emit(current_zone)
 	current_path = null
 
