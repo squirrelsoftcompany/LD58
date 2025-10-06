@@ -25,7 +25,6 @@ func _ready():
 	for node in get_tree().get_nodes_in_group("caravan"):
 		caravan = node
 	camera = get_viewport().get_camera_3d()
-
 func _process(_delta: float) -> void:
 	if state == AmbushState.INIT:
 		return

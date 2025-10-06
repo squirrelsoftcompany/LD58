@@ -107,6 +107,9 @@ func _collector_visit() :
 	goldStock -= taxable
 	tax_Vis.hide()
 	$Sprite3D/StaticBody3D.hide()
+	if taxable >0:
+		crimeRate += taxeLevel
+	taxable = 0
 
 
 func _turn_end():
