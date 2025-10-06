@@ -83,7 +83,7 @@ func try_vanish():
 	if has_loot and target_caravan:
 		var pos = global_transform.origin
 		var caravan_pos = target_caravan.global_transform.origin
-		if (pos - caravan_pos).length() > 100.0:
+		if (pos - caravan_pos).length() > 10.0:
 			die()
 	
 func close_to_caravan() -> bool:

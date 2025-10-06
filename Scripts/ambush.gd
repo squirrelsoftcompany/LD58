@@ -1,4 +1,5 @@
 extends Node
+class_name Ambush
 
 enum AmbushState {INIT,START,RUNNING,END}
 
@@ -78,13 +79,8 @@ func end_ambush():
 	# Return camera to original view
 	var tween = create_tween()
 	tween.tween_property(camera, "global_transform", original_cam_transform, camera_move_duration)
-	#Delete bandit
-	for bandit in bandits_list:
-		bandit.queue_free()
-	bandits_list.clear()
-	#Delete ambush
-	queue_free()
-	
+	tween.tween_callback(_camera_replaced)
+
 func _focus_camera_on_ambush():
 	var caravan_transform = caravan.global_transform
 	
@@ -99,3 +95,12 @@ func _focus_camera_on_ambush():
 
 	var tween = create_tween()
 	tween.tween_property(camera, "global_transform", final_transform, camera_move_duration)
+
+func _camera_replaced():
+	#Delete bandit
+	for bandit in bandits_list:
+		bandit.queue_free()
+	bandits_list.clear()
+	#Delete ambush
+	GlobalEventHolder.emit_signal("endAmbush")
+	queue_free()
