@@ -56,7 +56,11 @@ func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 			continue
 		if caravan.gold < event.personal_gold_min:
 			continue
+		if caravan.food < event.personal_food_min:
+			continue
 		if place_type == "capital" and !event.capital:
+			continue
+		if place_type != "capital" and event.capital:
 			continue
 		if event.objectif and caravan.gold < caravan.gold_goal:
 			continue
