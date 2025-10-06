@@ -59,16 +59,16 @@ func _find_path():
 func _move_done():
 	current_zone = next_zone
 	gold += current_zone.taxable
-	print("TODO: show gold collected, it's ",gold," btw")
 	if current_zone == capital :
 		GlobalEventHolder.loopEnd.emit()
-		print("TODO: capital market")
-		gold = 0
 		food = max_food
+		GlobalEventHolder.turnStart.emit(current_zone)
+		GlobalEventHolder.loopStart.emit()
+		gold = 0
 		@warning_ignore("narrowing_conversion")
 		gold_goal *= 1.3
-		GlobalEventHolder.loopStart.emit()
-	GlobalEventHolder.turnStart.emit(current_zone)
+	else:
+		GlobalEventHolder.turnStart.emit(current_zone)
 	current_path = null
 
 func _half_move_done(bandits_on_path : int):
