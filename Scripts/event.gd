@@ -100,11 +100,24 @@ func _show_choices(choices: Array) -> void:
 	equalize_button_widths(choices_container)
 	choice_popup.visible = true
 
-# ---------------------------------------------------
-# Input handling (SPACE or ENTER to continue text)
-# ---------------------------------------------------
-func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("ui_accept"):
+
+func _input(event: InputEvent) -> void:
+	if ui_state == UIState.IDLE:
+		return
+	
+	var advance := false
+
+	# SPACE / ENTER
+	if event.is_action_pressed("ui_accept"):
+		advance = true
+
+	# left click
+	if event is InputEventMouseButton:
+		var mouse_event := event as InputEventMouseButton
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed:
+			advance = true
+
+	if not advance:
 		return
 	
 	if ui_state == UIState.DIALOGUE or ui_state == UIState.FOLLOWUP:
