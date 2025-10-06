@@ -8,9 +8,10 @@ func generate() -> void:
 	pass
 
 func _ready():
+	max_pv = pv
 	#  Default weapon for test
 	var newWeapon = Weapon.new()
-	newWeapon.weapon_damage = 50
+	newWeapon.weapon_damage = 10
 	newWeapon.weapon_range = 0.3
 	set_weapon(newWeapon)
 	# Found foo

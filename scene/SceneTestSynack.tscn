@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://6lniomeseq0r"]
+[gd_scene load_steps=15 format=3 uid="uid://6lniomeseq0r"]
 
 [ext_resource type="Script" uid="uid://cb4pum6jxof2s" path="res://scene/scene_test_synack.gd" id="1_vglxh"]
 [ext_resource type="Script" uid="uid://cq138k2ibep63" path="res://Scripts/UI/eventManager.gd" id="2_gl1cq"]
 [ext_resource type="PackedScene" uid="uid://42gux3sh7vl4" path="res://scene/UI/event_ui.tscn" id="2_mraof"]
 [ext_resource type="PackedScene" uid="uid://17hga36jjuc4" path="res://scene/guard.tscn" id="4_k65o0"]
-[ext_resource type="PackedScene" uid="uid://dnmj48v5ydjje" path="res://scene/bandit.tscn" id="5_xmote"]
 [ext_resource type="PackedScene" uid="uid://dpnm4wsmas28f" path="res://scene/ambush.tscn" id="6_g4tej"]
 [ext_resource type="PackedScene" uid="uid://fpe8p52wc2xa" path="res://scene/caravan.tscn" id="6_xmote"]
 [ext_resource type="Script" uid="uid://rejjwwhj0wh6" path="res://Scripts/Vfx/directional_light_3d.gd" id="8_8fxi8"]
@@ -41,13 +40,8 @@ script = ExtResource("2_gl1cq")
 
 [node name="Guard" parent="." instance=ExtResource("4_k65o0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7603824, 0, 0)
-pv = 100
-speed = 0.5
 
-[node name="Ambush" parent="." node_paths=PackedStringArray("caravan", "camera") instance=ExtResource("6_g4tej")]
-caravan = NodePath("../Caravan")
-bandit_scene = ExtResource("5_xmote")
-camera = NodePath("../Camera3D")
+[node name="Ambush" parent="." instance=ExtResource("6_g4tej")]
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0)
@@ -67,184 +61,94 @@ mesh = SubResource("PlaneMesh_2shi4")
 
 [node name="MainRing" type="Node3D" parent="RoadHolder"]
 
-[node name="MainRoad1" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad1" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad2" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad2" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad3" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad3" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad4" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad4" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad5" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad5" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad6" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad6" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
-[node name="MainRoad7" parent="RoadHolder/MainRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
+[node name="MainRoad7" parent="RoadHolder/MainRing" instance=ExtResource("9_jfi73")]
 
 [node name="InRing" type="Node3D" parent="RoadHolder"]
 
-[node name="InRoad1" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad1" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="InRoad2" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad2" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="InRoad3" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad3" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="InRoad4" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad4" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="InRoad5" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad5" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="InRoad6" parent="RoadHolder/InRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="InRoad6" parent="RoadHolder/InRing" instance=ExtResource("9_jfi73")]
 cost = 3
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
 [node name="OutRing" type="Node3D" parent="RoadHolder"]
 
-[node name="OutRoad1" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad1" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad2" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad2" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad3" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad3" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad4" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad4" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad5" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad5" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad6" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad6" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad7" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad7" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad8" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad8" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="OutRoad9" parent="RoadHolder/OutRing" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="OutRoad9" parent="RoadHolder/OutRing" instance=ExtResource("9_jfi73")]
 cost = 4
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
 [node name="Connector" type="Node3D" parent="RoadHolder"]
 
-[node name="ConnectorRoad1" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad1" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad2" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad2" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad3" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad3" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad4" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad4" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad5" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad5" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad6" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad6" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad7" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad7" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
-[node name="ConnectorRoad8" parent="RoadHolder/Connector" node_paths=PackedStringArray("from", "to") instance=ExtResource("9_jfi73")]
+[node name="ConnectorRoad8" parent="RoadHolder/Connector" instance=ExtResource("9_jfi73")]
 cost = 2
-crimeRate = 0.0
-from = NodePath("")
-to = NodePath("")
 
 [node name="ZoneHolder" type="Node3D" parent="."]
 
@@ -325,9 +229,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.084675, 0, 2.7600012)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.95874, -1.9073486e-06, -9.864445)
 population = 3
 
-[node name="Caravan" parent="." node_paths=PackedStringArray("capital") instance=ExtResource("6_xmote")]
+[node name="Caravan" parent="." instance=ExtResource("6_xmote")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-capital = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.29427394, 0.95572114, 0, -0.95572114, 0.29427394, 0, 28.38175, 15.781097)

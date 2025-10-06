@@ -5,13 +5,14 @@ var current_zone : Place
 var next_zone : Place
 var movement_tween : Tween
 var gold : int = 0
-var guard : Array[Guard]
+var guards : Array[Guard]
 var ambushed : bool = false
 var current_path : Road
 
 @export var capital : Place
 @export var food : int = 10
 @export var max_food : int = 10
+@export var guard_scene: PackedScene
 
 func _ready():
 	current_zone = capital
@@ -21,6 +22,10 @@ func _ready():
 	GlobalEventHolder.connect("reward_received", Callable(self, "_on_reward_received"))
 	GlobalEventHolder.connect("endAmbush", Callable(self, "_on_endAmbush"))
 	print("TODO: caravan still starts the loop")
+	#Add the first guard
+	var guard = guard_scene.instantiate()
+	guards.append(guard)
+	
 
 func _move(x:Place):
 	next_zone = x
@@ -94,7 +99,7 @@ func _on_endAmbush():
 	ambushed = false
 
 func get_guards() -> Array[Guard]:
-	return guard
+	return guards
 	
 func generateAmbush(p_current_zone: Place,p_next_zone: Place) -> int:
 	var current_crimerate

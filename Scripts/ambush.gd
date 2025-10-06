@@ -5,8 +5,8 @@ enum AmbushState {INIT,START,RUNNING,END}
 
 var caravan: Caravan
 @export var spawn_distance: float = 5.0
-@export var guard_distance: float = 3.0 
-@export var spread_radius: float = 4.0
+@export var guard_distance: float = 0.5 
+@export var spread_radius: float = 0.1
 @export var direction: Vector3 = Vector3.BACK
 @export var bandit_scene: PackedScene
 
@@ -64,6 +64,8 @@ func init_ambush(nb_bandit : int):
 	#Guards placement
 	var guards = caravan.get_guards()
 	for guard in guards:
+		#Add guard on scene
+		add_child(guard)
 		var lateral_offset = Vector3(
 			randf_range(-spread_radius * 0.5, spread_radius * 0.5),
 			0.0,
@@ -76,6 +78,11 @@ func init_ambush(nb_bandit : int):
 
 func end_ambush():
 	state = AmbushState.END
+	#Retrive guards on scene and heal them
+	var guards = caravan.get_guards()
+	for guard in guards:
+		guard.heal()
+		remove_child(guard)
 	# Return camera to original view
 	var tween = create_tween()
 	tween.tween_property(camera, "global_transform", original_cam_transform, camera_move_duration)

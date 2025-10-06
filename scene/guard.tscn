@@ -9,7 +9,7 @@ height = 0.6
 [node name="Guard" type="Node3D" groups=["guard"]]
 script = ExtResource("1_6ld80")
 pv = 100
-speed = 0.5
+speed = 1.2
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)

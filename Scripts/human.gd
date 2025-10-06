@@ -8,7 +8,7 @@ enum BodyState {ALIVE,DEAD}
 @export var weapon : Weapon
 @export var cooldown_hit: float = 1.5
 
-
+var max_pv : int
 var foos: Array[Node3D] = []
 var can_hit: bool = true
 var hit_timer: Timer
@@ -19,6 +19,10 @@ var state: BodyState = BodyState.ALIVE
 
 func set_weapon(pWeapon : Weapon):
 	weapon = pWeapon
+	
+func heal():
+	state = BodyState.ALIVE
+	pv = max_pv
 
 func try_to_hit(human : Human) -> void:
 	if can_hit:
