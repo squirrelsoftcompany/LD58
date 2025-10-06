@@ -6,23 +6,60 @@
 [sub_resource type="Resource" id="Resource_ysqe4"]
 script = ExtResource("1_ysqe4")
 text = "No"
-followup_dialogue = Array[String](["Well... have a nice day my lord..."])
+rewards = {
+"food": 0,
+"gold": 0,
+"guard": 0,
+"hide_food": 0,
+"hide_gold": 0,
+"hide_guard": 0,
+"hide_p_crimerate": 1,
+"hide_p_food": 0,
+"hide_p_population": 0,
+"p_crimerate": 0,
+"p_food": 0,
+"p_population": 0
+}
+followup_dialogue = Array[String](["Well... have a nice day my lord.."])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [sub_resource type="Resource" id="Resource_p538p"]
 script = ExtResource("1_ysqe4")
 text = "Indeed"
 rewards = {
-"Food": 1
+"food": 0,
+"gold": 0,
+"guard": 0,
+"hide_food": 1,
+"hide_gold": 0,
+"hide_guard": 0,
+"hide_p_crimerate": 0,
+"hide_p_food": 0,
+"hide_p_population": 0,
+"p_crimerate": 0,
+"p_food": 0,
+"p_population": 0
 }
-followup_dialogue = Array[String](["Take some food my lord ! Your journey will be very long."])
+followup_dialogue = Array[String](["Take some food my lord ! Your journey will be very long [i]Get food[/i]"])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [sub_resource type="Resource" id="Resource_8wgad"]
 script = ExtResource("1_ysqe4")
 text = "Give me your money, bumpkin !"
 rewards = {
-"Gold": 3
+"food": 0,
+"gold": 2,
+"guard": 0,
+"hide_food": 0,
+"hide_gold": 0,
+"hide_guard": 0,
+"hide_p_crimerate": 0,
+"hide_p_food": 0,
+"hide_p_gold": -2,
+"hide_p_population": 0,
+"p_crimerate": 3,
+"p_food": 0,
+"p_population": 0
 }
 followup_dialogue = Array[String](["My excuses, my lord, this is all I have on me"])
 metadata/_custom_type_script = "uid://chh4yhua0uswt"

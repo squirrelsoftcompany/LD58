@@ -186,5 +186,7 @@ func format_reward_key(key: String) -> String:
 			return "Local population"
 		"p_food":
 			return "Local food"
+		"p_gold":
+			return "Local gold"
 		_:
 			return key.capitalize()

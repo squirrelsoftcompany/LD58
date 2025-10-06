@@ -15,5 +15,6 @@ class_name EventChoice
 	"hide_p_crimerate": 0,
 	"hide_p_population": 0,
 	"hide_p_food": 0,
+	"hide_p_gold": 0,
 }     # {"gold": -5, "food": 2}
 @export var followup_dialogue: Array[String] = []  
