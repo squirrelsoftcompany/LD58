@@ -81,7 +81,8 @@ func _half_move_done(bandits_on_path : int):
 func _on_reward_received(rewards: Dictionary) -> void:
 	for resource_name in rewards.keys():
 		var amount = rewards[resource_name]
-
+		if amount == 0:
+			continue
 		match resource_name.replace("hide_", "").to_lower():
 			"gold":
 				gold += amount

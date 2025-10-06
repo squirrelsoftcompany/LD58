@@ -150,12 +150,8 @@ func _on_choice_pressed(choice: EventChoice) -> void:
 	choice_event.clear()
 
 	# Apply rewards
-	for resource_name in choice.rewards.keys():
-		var amount = choice.rewards[resource_name]
-		print("Reward:", resource_name, amount)
-		GlobalEventHolder.emit_signal("reward_received", choice.rewards)
+	GlobalEventHolder.emit_signal("reward_received", choice.rewards)
 		
-
 	# Show follow-up dialogue if exists
 	if choice.followup_dialogue.size() > 0:
 		dialogue_queue = choice.followup_dialogue.duplicate()
