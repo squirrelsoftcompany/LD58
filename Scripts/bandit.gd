@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 		else:
 			#Go to the caravan
 			move()
+		try_vanish()
 
 func _on_node_added(node: Node) -> void:
 	if node.is_in_group("guard"):
@@ -77,6 +78,13 @@ func move() -> void:
 func loot() -> void:
 	#target_caravan.take_loot()
 	has_loot = true
+	
+func try_vanish():
+	if has_loot and target_caravan:
+		var pos = global_transform.origin
+		var caravan_pos = target_caravan.global_transform.origin
+		if (pos - caravan_pos).length() > 100.0:
+			die()
 	
 func close_to_caravan() -> bool:
 	var caravan = target_caravan

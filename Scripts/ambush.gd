@@ -78,6 +78,11 @@ func end_ambush():
 	# Return camera to original view
 	var tween = create_tween()
 	tween.tween_property(camera, "global_transform", original_cam_transform, camera_move_duration)
+	#Delete bandit
+	for bandit in bandits_list:
+		bandit.queue_free()
+	bandits_list.clear()
+	#Delete ambush
 	queue_free()
 	
 func _focus_camera_on_ambush():
