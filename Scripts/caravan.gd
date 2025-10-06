@@ -88,6 +88,25 @@ func _on_reward_received(rewards: Dictionary) -> void:
 				food += amount
 				food = max(food, 0)
 				print("Food new quantity : ",food)
+			"guard":
+				if amount > 0:
+					for i in amount:
+						var guard = guard_scene.instantiate()
+						guards.append(guard)
+				elif amount < 0 and guards.size() > 1:
+					var random_index = randi_range(1, guards.size() - 1)
+					var guard_to_remove = guards[random_index]
+					guards.remove_at(guard_to_remove)
+					guard_to_remove.free()
+			"p_crimerate":
+				current_zone.crimeRate += amount
+				current_zone.crimeRate = max(current_zone.crimeRate, 0)
+			"p_population":
+				current_zone.crimeRate += amount
+				current_zone.crimeRate = max(current_zone.crimeRate, 0)
+			"p_food":
+				current_zone.food += amount
+				current_zone.food = max(current_zone.crimeRate, 0)
 			_:
 				push_warning("Unknown reward type: %s" % resource_name)
 
