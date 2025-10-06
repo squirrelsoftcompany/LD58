@@ -4,6 +4,7 @@ class_name EventManager
 @export var all_events: Array[EventData] = []
 
 func _ready():
+	randomize()
 	GlobalEventHolder.connect("request_event", Callable(self, "_on_request_event"))
 	GlobalEventHolder.connect("turnStart", Callable(self, "_on_turn_start"))
 	var dir_path = "res://DataEvents/"
@@ -26,9 +27,15 @@ func _ready():
 		#GlobalEventHolder.emit_signal("event_triggered", event)
 		
 func _on_turn_start(place : Place) -> void:
-	var event = trigger_random_event(place.get_stats_dict(), place.get_place_type())
-	if event:
-		GlobalEventHolder.emit_signal("event_triggered", event)
+	if randf() < 0.6: #60%
+		var place_type
+		if place.capital:
+			place_type = "capital"
+		else:
+			place_type = place.get_place_type()
+		var event = trigger_random_event(place.get_stats_dict(),place_type)
+		if event:
+			GlobalEventHolder.emit_signal("event_triggered", event)
 
 func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 	var available := []
@@ -42,6 +49,8 @@ func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 		if place_stats["crimerate"] < event.min_crime or place_stats["crimerate"] > event.max_crime:
 			continue
 		if place_stats["population"] < event.min_population or place_stats["population"] > event.max_population:
+			continue
+		if place_type == "capital" and !event.capital:
 			continue
 		available.append(event)
 	return available

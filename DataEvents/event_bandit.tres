@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=5 format=3 uid="uid://r3lu4p0lvlqw"]
+
+[ext_resource type="Script" uid="uid://chh4yhua0uswt" path="res://Scripts/Events/eventChoice.gd" id="1_k3vtd"]
+[ext_resource type="Script" uid="uid://bpsyoluhklrd0" path="res://Scripts/Events/eventData.gd" id="2_uyfw7"]
+
+[sub_resource type="Resource" id="Resource_k3vtd"]
+script = ExtResource("1_k3vtd")
+text = "Take it"
+rewards = {
+"food": 0,
+"gold": -1,
+"guard": 0,
+"p_crimerate": 0,
+"p_food": 0,
+"p_population": 0
+}
+followup_dialogue = Array[String](["You made the right choice, my friend."])
+metadata/_custom_type_script = "uid://chh4yhua0uswt"
+
+[sub_resource type="Resource" id="Resource_uyfw7"]
+script = ExtResource("1_k3vtd")
+text = "My money? Never!"
+followup_dialogue = Array[String](["Run away [i]This time I got away without a scratch...[\\i]"])
+metadata/_custom_type_script = "uid://chh4yhua0uswt"
+
+[resource]
+script = ExtResource("2_uyfw7")
+dialogue = Array[String](["Hey, you! The rich guy! I get the impression you're a little weighed down, which isn't great for running fast."])
+choices = Array[ExtResource("1_k3vtd")]([SubResource("Resource_k3vtd"), SubResource("Resource_uyfw7")])
+max_gold = 40
+min_crime = 15
+metadata/_custom_type_script = "uid://bpsyoluhklrd0"

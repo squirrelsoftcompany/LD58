@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=5 format=3 uid="uid://brc234fdrh8h6"]
+
+[ext_resource type="Script" uid="uid://chh4yhua0uswt" path="res://Scripts/Events/eventChoice.gd" id="1_ouwy0"]
+[ext_resource type="Script" uid="uid://bpsyoluhklrd0" path="res://Scripts/Events/eventData.gd" id="2_f20kg"]
+
+[sub_resource type="Resource" id="Resource_ouwy0"]
+script = ExtResource("1_ouwy0")
+text = "Take nothing"
+metadata/_custom_type_script = "uid://chh4yhua0uswt"
+
+[sub_resource type="Resource" id="Resource_f20kg"]
+script = ExtResource("1_ouwy0")
+text = "The menu, please"
+rewards = {
+"food": 0,
+"gold": -1,
+"guard": 0,
+"hide_food": 0,
+"hide_gold": 0,
+"hide_guard": 0,
+"hide_p_crimerate": 0,
+"hide_p_food": 0,
+"hide_p_population": 0,
+"p_crimerate": 0,
+"p_food": 0,
+"p_population": 0
+}
+followup_dialogue = Array[String](["Nothing beats a good meal"])
+metadata/_custom_type_script = "uid://chh4yhua0uswt"
+
+[resource]
+script = ExtResource("2_f20kg")
+dialogue = Array[String](["Hello, please make yourselves comfortable and eat as you wish!"])
+choices = Array[ExtResource("1_ouwy0")]([SubResource("Resource_ouwy0"), SubResource("Resource_f20kg")])
+type = "inn"
+max_crime = 50
+metadata/_custom_type_script = "uid://bpsyoluhklrd0"

@@ -85,9 +85,10 @@ func _show_choices(choices: Array) -> void:
 		for resource_name in choice_data["rewards"].keys():
 			var amount = choice_data["rewards"][resource_name]
 			
-			var reward_label = Label.new()
-			reward_label.text = "%s %+d" % [resource_name, amount]
-			rewards_container.add_child(reward_label)
+			if amount != 0 and !resource_name.begins_with("hide_"):
+				var reward_label = Label.new()
+				reward_label.text = "%s %+d" % [format_reward_key(resource_name), amount]
+				rewards_container.add_child(reward_label)
 			
 			# Variante : use icon
 			# var icon = TextureRect.new()
@@ -168,3 +169,22 @@ func _on_choice_pressed(choice: EventChoice) -> void:
 	# External callback if needed
 	if choice_callback.is_valid():
 		choice_callback.call(choice)
+
+func format_reward_key(key: String) -> String:
+	match key.to_lower():
+		"gold":
+			return "Gold"
+		"food":
+			return "Food"
+		"population":
+			return "Population"
+		"guard":
+			return "Guard"
+		"p_crimerate":
+			return "Local criminality"
+		"p_population":
+			return "Local population"
+		"p_food":
+			return "Local food"
+		_:
+			return key.capitalize()

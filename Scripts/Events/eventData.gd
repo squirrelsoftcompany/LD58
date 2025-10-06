@@ -15,3 +15,4 @@ class_name EventData
 @export var max_crime: int = 100
 @export var min_population: int = 0
 @export var max_population: int = 100
+@export var capital: bool = false

@@ -82,7 +82,7 @@ func _on_reward_received(rewards: Dictionary) -> void:
 	for resource_name in rewards.keys():
 		var amount = rewards[resource_name]
 
-		match resource_name.to_lower():
+		match resource_name.replace("hide_", "").to_lower():
 			"gold":
 				gold += amount
 				gold = max(gold, 0)
