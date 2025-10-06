@@ -12,11 +12,16 @@ func _ready():
 	GlobalEventHolder.turnStart.connect(func(_x): _update_gold())
 	GlobalEventHolder.turnEnd.connect(func(_x): _update_food())
 	GlobalEventHolder.reward_received.connect(func(_x): _update_all())
+	GlobalEventHolder.loopStart.connect(func(_x): _update_all())
+	GlobalEventHolder.loopEnd.connect(func(_x): _update_all())
 	_update_all()
+	food_max_label.text = str(caravan.max_food)
 
 func _update_all():
 	_update_food()
 	_update_gold()
+	food_max_label.text = str(caravan.max_food)
+	
 
 func _update_gold():
 	gold_label.text = str(caravan.gold)

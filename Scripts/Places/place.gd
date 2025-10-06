@@ -71,9 +71,9 @@ func _on_loop_start():
 
 func _updatePlace():
 	@warning_ignore("integer_division")
-	goldStock -= population/10
+	goldStock -= population/8
 	@warning_ignore("narrowing_conversion")
-	population *= 1.2
+	population *= 1.34
 	@warning_ignore("narrowing_conversion")
 	population -= crimeRate/10
 	@warning_ignore("integer_division")

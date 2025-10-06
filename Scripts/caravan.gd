@@ -7,11 +7,14 @@ var movement_tween : Tween
 var gold : int = 0
 var guard : Array[Guard]
 var ambushed : bool = false
+var current_path : Road
 
-@export var capital : Node3D
+@export var capital : Place
 @export var food : int = 10
+@export var max_food : int = 10
 
 func _ready():
+	current_zone = capital
 	position = capital.position
 	GlobalEventHolder.turnEnd.connect(_move)
 	GlobalEventHolder.loopStart.emit() ## TODO game bootup sequence
@@ -21,6 +24,8 @@ func _ready():
 
 func _move(x:Place):
 	next_zone = x
+	_find_path()
+	food -= current_path.cost
 	look_at(next_zone.position)
 	
 	var bandits_on_path = generateAmbush(current_zone,next_zone)
@@ -38,7 +43,13 @@ func _move(x:Place):
 		movement_tween.tween_property(self,"position",next_pos,0.5)
 		movement_tween.tween_callback(_move_done)
 		
-		
+
+func _find_path():
+	var i : int = 0
+	while current_zone.outgoing_roads[i].to != next_zone and i < current_zone.outgoing_roads.size():
+		i+=1
+	current_path = current_zone.outgoing_roads[i]
+
 func _move_done():
 	current_zone = next_zone
 	gold += current_zone.taxable
@@ -48,7 +59,9 @@ func _move_done():
 		print("TODO: capital market")
 		gold = 0
 		GlobalEventHolder.loopStart.emit()
+		food = max_food
 	GlobalEventHolder.turnStart.emit(current_zone)
+	current_path = null
 
 func _half_move_done(bandits_on_path : int):
 	if bandits_on_path > 0:

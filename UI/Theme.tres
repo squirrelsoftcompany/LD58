@@ -30,25 +30,15 @@ bg_color = Color(0.38039216, 0.2901961, 0.09411765, 1)
 border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0.78039217, 0.8, 0.30588236, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-expand_margin_left = 4.0
-expand_margin_right = 5.0
-shadow_color = Color(0.2421875, 0.2421875, 0.2421875, 0.6)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6joml"]
-bg_color = Color(0.16796875, 0.09361545, 0.0063320613, 1)
-border_width_left = 3
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 3
-border_color = Color(0.09375, 0.067352176, 0.002009958, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phhgh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6joml"]
 bg_color = Color(0.16796875, 0.11549087, 0.06574747, 1)
 border_width_left = 2
 border_width_top = 4
@@ -62,6 +52,18 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 shadow_color = Color(0.78039217, 0.8, 0.30588236, 1)
 shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phhgh"]
+bg_color = Color(0.16796875, 0.09361545, 0.0063320613, 1)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.09375, 0.067352176, 0.002009958, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [resource]
 DiegeticButton/base_type = &"Button"
@@ -78,10 +80,10 @@ HSeparator/styles/separator = SubResource("StyleBoxFlat_31i6c")
 HeaderLarge/colors/font_color = Color(0.75727713, 0.82421875, 0.82421875, 1)
 HeaderLarge/colors/font_outline_color = Color(0.375, 0.24205774, 0.082441695, 1)
 HeaderLarge/constants/outline_size = 8
-HeaderLarge/font_sizes/font_size = 30
-MarginContainer/constants/margin_bottom = 20
-MarginContainer/constants/margin_left = 20
-MarginContainer/constants/margin_right = 20
-MarginContainer/constants/margin_top = 20
+HeaderLarge/font_sizes/font_size = 26
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_6joml")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_phhgh")
