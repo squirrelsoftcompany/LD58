@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventData" load_steps=4 format=3 uid="uid://ceosrang5iqqw"]
+[gd_resource type="Resource" script_class="EventData" load_steps=4 format=3 uid="uid://bw7megvvw7ctb"]
 
 [ext_resource type="Script" uid="uid://chh4yhua0uswt" path="res://Scripts/Events/eventChoice.gd" id="1_jpuw4"]
 [ext_resource type="Script" uid="uid://bpsyoluhklrd0" path="res://Scripts/Events/eventData.gd" id="2_e1bva"]
@@ -28,6 +28,7 @@ script = ExtResource("2_e1bva")
 dialogue = Array[String](["There's no food left, the caravan disband and you are left to starve... alone"])
 choices = Array[ExtResource("1_jpuw4")]([SubResource("Resource_jpuw4")])
 personal_food_min = -9999999
+personal_food_max = 0
 max_gold = 10000000
 max_food = 1000000000
 max_crime = 10000000

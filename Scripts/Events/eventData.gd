@@ -9,6 +9,7 @@ class_name EventData
 @export var type: String = "" # "inn", "camp", "village"
 @export var personal_gold_min: int = 0
 @export var personal_food_min: int = 0
+@export var personal_food_max: int = 99999
 @export var min_gold: int = 0
 @export var max_gold: int = 100
 @export var min_food: int = 0

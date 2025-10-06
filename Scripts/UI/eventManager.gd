@@ -58,6 +58,8 @@ func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 			continue
 		if caravan.food < event.personal_food_min:
 			continue
+		if caravan.food > event.personal_food_max:
+			continue
 		if place_type == "capital" and !event.capital:
 			continue
 		if place_type != "capital" and event.capital:
