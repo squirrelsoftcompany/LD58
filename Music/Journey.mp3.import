@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Journey.mp3-7aa11dc7ed1325c50e5121e380f048d4.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
