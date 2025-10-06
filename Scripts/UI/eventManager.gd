@@ -3,10 +3,14 @@ class_name EventManager
 
 @export var all_events: Array[EventData] = []
 
+var caravan: Caravan
+
 func _ready():
 	randomize()
 	GlobalEventHolder.connect("request_event", Callable(self, "_on_request_event"))
 	GlobalEventHolder.connect("turnStart", Callable(self, "_on_turn_start"))
+	for node in get_tree().get_nodes_in_group("caravan"):
+		caravan = node
 	var dir_path = "res://DataEvents/"
 	var dir = DirAccess.open(dir_path)
 	if dir:
@@ -27,7 +31,7 @@ func _ready():
 		#GlobalEventHolder.emit_signal("event_triggered", event)
 		
 func _on_turn_start(place : Place) -> void:
-	if randf() < 0.6: #60%
+	if randf() < 0.6 or place.capital: #60%
 		var place_type
 		if place.capital:
 			place_type = "capital"
@@ -50,7 +54,13 @@ func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 			continue
 		if place_stats["population"] < event.min_population or place_stats["population"] > event.max_population:
 			continue
+		if caravan.gold < event.personal_gold_min:
+			continue
 		if place_type == "capital" and !event.capital:
+			continue
+		if event.objectif and caravan.gold < caravan.gold_goal:
+			continue
+		if !event.objectif and caravan.gold >= caravan.gold_goal:
 			continue
 		available.append(event)
 	return available

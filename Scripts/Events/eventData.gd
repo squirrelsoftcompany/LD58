@@ -7,6 +7,7 @@ class_name EventData
 
 #Trigger condition
 @export var type: String = "" # "inn", "camp", "village"
+@export var personal_gold_min: int = 0
 @export var min_gold: int = 0
 @export var max_gold: int = 100
 @export var min_food: int = 0
@@ -16,3 +17,4 @@ class_name EventData
 @export var min_population: int = 0
 @export var max_population: int = 100
 @export var capital: bool = false
+@export var objectif: bool = false

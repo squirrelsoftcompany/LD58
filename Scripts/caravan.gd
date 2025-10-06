@@ -101,15 +101,18 @@ func _on_reward_received(rewards: Dictionary) -> void:
 					var guard_to_remove = guards[random_index]
 					guards.remove_at(guard_to_remove)
 					guard_to_remove.free()
+			"p_gold":
+				current_zone.goldStock += amount
+				current_zone.goldStock = max(current_zone.goldStock, 0)
 			"p_crimerate":
 				current_zone.crimeRate += amount
 				current_zone.crimeRate = max(current_zone.crimeRate, 0)
 			"p_population":
-				current_zone.crimeRate += amount
-				current_zone.crimeRate = max(current_zone.crimeRate, 0)
+				current_zone.population += amount
+				current_zone.population = max(current_zone.population, 0)
 			"p_food":
-				current_zone.food += amount
-				current_zone.food = max(current_zone.crimeRate, 0)
+				current_zone.foodStock += amount
+				current_zone.foodStock = max(current_zone.foodStock, 0)
 			_:
 				push_warning("Unknown reward type: %s" % resource_name)
 
