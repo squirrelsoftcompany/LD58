@@ -1,9 +1,11 @@
 extends Node3D
+class_name Caravan
 
 var current_zone : Place
 var next_zone : Place
 var movement_tween : Tween
 var gold : int = 0
+var guard : Array[Guard]
 
 @export var capital : Node3D
 @export var food : int = 10
@@ -48,3 +50,6 @@ func _on_reward_received(rewards: Dictionary) -> void:
 				print("Food new quantity : ",food)
 			_:
 				push_warning("Unknown reward type: %s" % resource_name)
+
+func get_guards() -> Array[Guard]:
+	return guard

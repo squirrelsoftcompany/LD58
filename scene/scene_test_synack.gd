@@ -14,3 +14,4 @@ func _ready() -> void:
 
 	var place_type = "village"
 	GlobalEventHolder.emit_signal("request_event", place_stats, place_type)
+	GlobalEventHolder.emit_signal("startAmbush", 3)
