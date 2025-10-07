@@ -11,18 +11,6 @@ func _ready():
 	GlobalEventHolder.connect("turnStart", Callable(self, "_on_turn_start"))
 	for node in get_tree().get_nodes_in_group("caravan"):
 		caravan = node
-	var dir_path = "res://DataEvents/"
-	var dir = DirAccess.open(dir_path)
-	if dir:
-		dir.list_dir_begin()
-		var filename = dir.get_next()
-		while filename != "":
-			if filename.ends_with(".tres"):
-				var ev = load(dir_path + filename) as EventData
-				if ev:
-					all_events.append(ev)
-			filename = dir.get_next()
-		dir.list_dir_end()
 
 
 #func _on_request_event(place_stats: Dictionary, place_type: String) -> void:
