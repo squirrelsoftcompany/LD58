@@ -139,13 +139,13 @@ func generateAmbush(p_current_zone: Place,p_next_zone: Place) -> int:
 	else:
 		next_crimerate = p_next_zone.crimeRate
 		
-	var path_crimerate = (current_crimerate + next_crimerate)/2
+	var path_crimerate = (current_crimerate + next_crimerate)/2.0
 	print("path crimerate : ",path_crimerate)
 	var nb_bandit
 	if path_crimerate < 15:
 		nb_bandit = 0
 	else:
 		path_crimerate = max(path_crimerate - (randi() % 16),0)
-		var mapped = (path_crimerate - 20) / (100 - 20) * 7 + 1
+		var mapped = (path_crimerate - 15.0) / (50.0 - 20.0) * 7.0 + 1.0
 		nb_bandit = int(clamp(round(mapped), 1, 8))
 	return nb_bandit

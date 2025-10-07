@@ -6,7 +6,7 @@ enum AmbushState {INIT,START,RUNNING,END}
 var caravan: Caravan
 @export var spawn_distance: float = 5.0
 @export var guard_distance: float = 0.5 
-@export var spread_radius: float = 0.1
+@export var spread_radius: float = 3.0
 @export var direction: Vector3 = Vector3.BACK
 @export var bandit_scene: PackedScene
 
@@ -49,7 +49,7 @@ func init_ambush(nb_bandit : int):
 		var lateral_offset = Vector3(
 			randf_range(-spread_radius, spread_radius),
 			0.0,
-			randf_range(-spread_radius * 0.2, spread_radius * 0.2)
+			randf_range(-spread_radius * 0.5, spread_radius * 0.5)
 		)
 		var spawn_pos = caravan_pos + forward_dir * spawn_distance + lateral_offset
 	
