@@ -22,6 +22,8 @@ func set_weapon(pWeapon : Weapon):
 	
 func heal():
 	state = BodyState.ALIVE
+	# Back on our feet!
+	rotation_degrees = Vector3(0, rotation_degrees.y, rotation_degrees.z)
 	pv = max_pv
 
 func try_to_hit(human : Human) -> void:

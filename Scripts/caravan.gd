@@ -100,7 +100,7 @@ func _on_reward_received(rewards: Dictionary) -> void:
 				elif amount < 0 and guards.size() > 1:
 					var random_index = randi_range(1, guards.size() - 1)
 					var guard_to_remove = guards[random_index]
-					guards.remove_at(guard_to_remove)
+					guards.remove_at(random_index)
 					guard_to_remove.free()
 			"p_gold":
 				current_zone.goldStock += amount
@@ -126,6 +126,13 @@ func _on_endAmbush():
 
 func get_guards() -> Array[Guard]:
 	return guards
+	
+func get_looted(loot_quantity: int) -> int:
+	var lost = min(gold, loot_quantity)
+	gold -= lost
+	GlobalEventHolder.get_looted.emit()
+	return lost
+	
 	
 func generateAmbush(p_current_zone: Place,p_next_zone: Place) -> int:
 	var current_crimerate

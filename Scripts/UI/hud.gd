@@ -12,6 +12,7 @@ func _ready():
 	GlobalEventHolder.turnStart.connect(func(_x): _update_gold())
 	GlobalEventHolder.turnEnd.connect(func(_x): _update_food())
 	GlobalEventHolder.reward_received.connect(func(_x): _update_all())
+	GlobalEventHolder.get_looted.connect(_update_gold)
 	GlobalEventHolder.loopStart.connect( _update_all)
 	GlobalEventHolder.loopEnd.connect( _update_all)
 	_update_all()

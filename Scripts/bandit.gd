@@ -3,6 +3,7 @@ class_name Bandit
 
 var target_caravan: Node3D
 var has_loot = false
+var loot_value = 0
 
 
 func _ready():
@@ -76,16 +77,27 @@ func move() -> void:
 	move_tween.tween_property(self, "global_transform:origin", target_pos, travel_time).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 func loot() -> void:
-	#target_caravan.take_loot()
 	has_loot = true
+	loot_value = target_caravan.get_looted(2)
+	
 	
 func try_vanish():
 	if has_loot and target_caravan:
 		var pos = global_transform.origin
 		var caravan_pos = target_caravan.global_transform.origin
 		if (pos - caravan_pos).length() > 10.0:
+			#It seems that the bandits are having a hard time accepting what they have become :/
+			visible = false
 			die()
+
+func die() -> void:
+	if has_loot and pv <= 0:
+		# Well it seems that we don't survived to the ambush. The loot come back to the caravan.
+		target_caravan.get_looted(-loot_value)
+	loot_value = 0 #It doesn't really matter because we're dead :/
+	super()
 	
+
 func close_to_caravan() -> bool:
 	var caravan = target_caravan
 	if caravan == null:
