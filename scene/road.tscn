@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dt6imb6cxfqv"]
+[gd_scene load_steps=14 format=3 uid="uid://dt6imb6cxfqv"]
 
 [ext_resource type="Script" uid="uid://dchat82bij1dh" path="res://Scripts/Places/road.gd" id="1_vdnbs"]
 [ext_resource type="Theme" uid="uid://57h6w2avsk6f" path="res://UI/Theme.tres" id="2_703ny"]
@@ -45,6 +45,11 @@ shader = ExtResource("2_gfsfr")
 shader_parameter/Noise = SubResource("NoiseTexture2D_rpcc7")
 shader_parameter/Gradient = SubResource("GradientTexture2D_0o65x")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfsfr"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.875, 0.5790916, 0.117566995, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfsfr"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gfsfr"]
@@ -77,6 +82,27 @@ path_local = false
 path_continuous_u = false
 path_u_distance = 1.0
 path_joined = false
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Path3D"]
+visible = false
+transparency = 0.54
+use_collision = true
+collision_layer = 16
+collision_mask = 16
+collision_priority = 10.0
+polygon = PackedVector2Array(0.6, -0.2, 0.6, 0.05, -0.8, 0.05, -0.8, -0.2)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 1
+path_interval = 1.0
+path_simplify_angle = 3.5
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = false
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_gfsfr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Path3D"]
 disable_mode = 2

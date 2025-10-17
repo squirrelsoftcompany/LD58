@@ -59,9 +59,11 @@ func innit():
 
 func show_cost():
 	$Sprite3D.show()
+	$Path3D/CSGPolygon3D2.show()
 
 func hide_cost():
 	$Sprite3D.hide()
+	$Path3D/CSGPolygon3D2.hide()
 
 func _update_loop():
 	crimeRate = (from.crimeRate + to.crimeRate)/2
