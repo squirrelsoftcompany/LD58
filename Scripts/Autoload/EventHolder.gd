@@ -21,3 +21,5 @@ signal startAmbush(nb_bandit : int)
 signal endAmbush()
 @warning_ignore("unused_signal")
 signal get_looted()
+@warning_ignore("unused_signal")
+signal gameOver

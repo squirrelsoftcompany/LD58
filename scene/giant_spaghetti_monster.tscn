@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2fyclwumdfe8"]
+
+[ext_resource type="Script" uid="uid://q4wmub3rwjf" path="res://giant_spaghetti_monster.gd" id="1_gojlx"]
+[ext_resource type="PackedScene" uid="uid://n6lt5shbnh74" path="res://scene/map.tscn" id="2_d3oic"]
+
+[node name="GiantSpaghettiMonster" type="Node3D"]
+script = ExtResource("1_gojlx")
+map = ExtResource("2_d3oic")

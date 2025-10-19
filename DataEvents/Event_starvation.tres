@@ -25,6 +25,7 @@ metadata/_custom_type_script = "uid://chh4yhua0uswt"
 
 [resource]
 script = ExtResource("2_e1bva")
+title = "Game_Over"
 dialogue = Array[String](["There's no food left, the caravan disband and you are left to starve... alone"])
 choices = Array[ExtResource("1_jpuw4")]([SubResource("Resource_jpuw4")])
 personal_food_min = -9999999

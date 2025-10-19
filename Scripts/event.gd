@@ -41,6 +41,8 @@ func _clear_all() -> void:
 	current_index = 0
 	choice_event.clear()
 	visible = false
+	if $"..".game_over :
+		GlobalEventHolder.gameOver.emit()
 
 # ---------------------------------------------------
 # Main text box

@@ -4,6 +4,7 @@ class_name EventManager
 @export var all_events: Array[EventData] = []
 
 var caravan: Caravan
+var game_over : bool
 
 func _ready():
 	randomize()
@@ -19,7 +20,7 @@ func _ready():
 		#GlobalEventHolder.emit_signal("event_triggered", event)
 		
 func _on_turn_start(place : Place) -> void:
-	if randf() < 0.6 or place.capital: #60%
+	if randf() < 0.6 or place.capital or caravan.food <= 0: #60%
 		var place_type
 		if place.capital:
 			place_type = "capital"
@@ -28,6 +29,9 @@ func _on_turn_start(place : Place) -> void:
 		var event = trigger_random_event(place.get_stats_dict(),place_type)
 		if event:
 			GlobalEventHolder.emit_signal("event_triggered", event)
+			if event.title == "Game_Over":
+				game_over = true
+				
 
 func get_available_events(place_stats: Dictionary, place_type: String) -> Array:
 	var available := []
